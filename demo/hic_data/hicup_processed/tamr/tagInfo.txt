@@ -1,0 +1,39 @@
+name	Unique Positions	Total Tags
+genome	82810150	41405078.0
+pairedEnd=true
+localInteractionFraction=0.003018
+interChrInteractionFraction=0.207323
+fragmentLengthEstimate=213		
+peakSizeEstimate=213		
+tagsPerBP=0.013383		
+averageTagsPerPosition=0.000		
+medianTagsPerPosition=0		
+averageTagLength=42.705		
+gsizeEstimate=3093768382		
+averageFragmentGCcontent=-1.000		
+chr1	5197436	3140631.5
+chr2	6443732	3778290.0
+chr3	7368225	3684112.5
+chr4	5240990	2620495.0
+chr5	5806346	2903173.0
+chr6	4939084	2469542.0
+chr7	4271525	2135763.0
+chr8	5278387	2639194.0
+chr9	2594481	1297241.0
+chr10	2733770	1366885.0
+chr11	3053809	1526904.5
+chr12	4364667	2182334.0
+chr13	2664004	1332002.0
+chr14	5376558	2688279.0
+chr15	2426275	1213137.5
+chr16	1769677	884838.5
+chr17	2391105	1195553.0
+chr18	1753463	876731.5
+chr19	560834	280417.0
+chr20	3056735	1528367.5
+chr21	815522	407761.0
+chr22	477666	238833.0
+chrX	2016766	1008383.0
+chrY	1691	845.5
+chrM	10728	5364.0
+cmd=makeTagDirectory hicup_processed mcf7_tr_R1.bam,mcf7_tr_R2.bam -tbp 1		
