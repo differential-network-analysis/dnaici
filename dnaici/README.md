@@ -1,28 +1,33 @@
 # README for DNAICI USERS
 
 
-## STEP 0. Load DNAICI package and initialize global parameters
 
-**Required**: HOMER and Bedtools are required by data preprocessing, java environment and ModularityOptimizer.jar are required by clustering algorithm.
+## STEP 0. Load DNAICI package and initialize global parameters
 
 `from dnaici import dnaici`
 
-**Required**: in_data_folder and out_data_folder are required. in_data_folder is the directory where Hi-C, gene expression, nucleosome density, histone marker, and chromosome regions hg19 data are deposited.out_data_folder is the folder where you want to export files.
+**Required**: HOMER and Bedtools are required by data preprocessing, java environment and ModularityOptimizer.jar are required by clustering algorithm.
 
-**Optional**: Three initial parameters: 
+`dna = dnaici.DNAICI(in_data_folder, out_data_folder)`
+
+**Required**
+    
+    in_data_folder: the directory where Hi-C, gene expression, nucleosome density, histone marker, and chromosome regions hg19 are deposited.
+    
+    out_data_folder: the directory where you want to export files.
+    
+**Optional** 
     
     cohort: Default = 'untreated'. 
     
     chromosome: Default = ['chr18','chr19'].
     
     resolution: Default = 500000.
-    
-`dna = dnaici.DNAICI()`
 
-**Note**: If you want to get the complete results for 23 chromosomes, please let the input of chromosome be 'whole_genome'. Whole genome analysis is time consuming, please be careful and patient.
+>**Note**: If you want to get the complete results for 23 chromosomes, please let the input of chromosome be 'whole_genome'. Whole genome analysis is time consuming, please be careful and patient.
 
-## STEP 1 Preprocess multi_omics data
-## STEP 1.1 Preprocess Hi-C data
+## STEP 1. Preprocess multi_omics data
+## STEP 1.1. Preprocess Hi-C data
 
 **Required**: 'super resolution' is required by preprocess_hic_tag2homer
 
@@ -184,7 +189,9 @@ Construct subnetworks based on selected DIEGs
 
 
 
-**Note**: for more descriptions about parameters and functions, please refer to dnaici.py
+>**Note**: for more descriptions about parameters and functions, please refer to dnaici.py
+
+For more details, see the [homepage](https://dnaici.github.io/dnaici/) of this article.
 
 
 
