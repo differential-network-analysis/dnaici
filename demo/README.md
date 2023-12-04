@@ -32,7 +32,7 @@ chr1	724136	727043	Satellite_repeat	1000	.
 
 **Description**: The black list file exclude a set of regions in the human genome that have anomalous, unstructured, high signal/read counts in next gen sequencing experiments independent of cell line and type of experiment. It was downloaded [HERE](https://www.encodeproject.org/annotations/ENCSR636HFF/).
 
-**Usage**: Chromosome size file and black list file is required by module `DNAICI.preprocess_hic_homer2bed()` to make bed file of window bin based on Bedtools [[1]](https://academic.oup.com/bioinformatics/article/26/6/841/244688).
+**Usage**: Chromosome size file and black list file is required by module `DNAICI.preprocess_hic_homer2bed()` to make bed file of window bin based on Bedtools from Ref [[1]](https://academic.oup.com/bioinformatics/article/26/6/841/244688).
 
 > **Note**: You can use more recent [hg38](https://www.nature.com/articles/s41598-019-45839-z) block list.
 
@@ -44,16 +44,16 @@ chr1	724136	727043	Satellite_repeat	1000	.
 **Format**:
 
 ```
-chr1	56998	1	0.5	55	chr20	18342794	1	54
-chr1	57001	1	0.5	54	chr5	71005979	1	55
+chr18	27971	1	0.5	44	chr13	25318728	0	38
+chr18	33411	0	0.5	35	chr18	20874150	0	44
 ...
 ```
 
-**Description**: Hi-C raw data in MCF7 cells with zero hour and one hour of E2 treated, as well as tamoxifen-resistant MCF7TR cells. Each row of it represents a inter- or intra- chromosomal interaction. The data were obtained from publication [[2]](https://www.nature.com/articles/s41467-019-09320-9).
+**Description**: Hi-C raw data in MCF7 cells and tamoxifen-resistant MCF7TR cells. Each row of it represents a inter- or intra- chromosomal interaction. The data were obtained from Ref [[2]](https://www.nature.com/articles/s41467-019-09320-9).
 
-**Usage**: Hi-C raw data are the input to the module `DNAICI.preprocess_hic_tag2homer()`. Software HOMER is needed to to filter and reorganize significant intra-chromosomal Hi-C interactions [[3]](https://www.cell.com/molecular-cell/pdf/S1097-2765(10)00366-7.pdf).
+**Usage**: Hi-C raw data are the input to the module `DNAICI.preprocess_hic_tag2homer()`. Software HOMER from Ref [[3]](https://www.cell.com/molecular-cell/pdf/S1097-2765(10)00366-7.pdf) is needed to filter and reorganize significant intra-chromosomal Hi-C interactions.
 
-**Note**: folders 't0' and 'untreated' include Hi-C data with zero hour E2 treated in MCF7 cells, 't1' contains one hour E2 treated Hi-C data in MCF7 cells, 'tamr' represents Hi-C data in tamoxifen-resistant MCF7TR cells.
+> **Note**: folders 'untreated' and 'tamr' include Hi-C data in untreated MCF7 cells and tamoxifen-resistant MCF7TR cells.
 
 
 ## Gene expresion
@@ -73,7 +73,7 @@ chr1	367640	368634	-0.8728869158218728	OR4F29	729759	+	ENSG00000284733	244.64538
 
 **Usage**: Gene expresion are the input to the module `DNAICI.preprocess_omics_map2hic()` when preprocessing multi-omics datasets.
 
-**Note**: MicroRNAs of genes in zero and one hour of E2 treated MCF7 cells were from literature [4](https://www.sciencedirect.com/science/article/pii/S0002944010600090), while RNA-Seq data in tamoxifen-resistant MCF7TR cells were obtained from [5](https://www.nature.com/articles/s41556-020-0514-z).
+**Note**: MicroRNAs of genes in zero and one hour of E2 treated MCF7 cells were from Ref [4](https://www.sciencedirect.com/science/article/pii/S0002944010600090), while RNA-Seq data in tamoxifen-resistant MCF7TR cells were obtained from Ref [5](https://www.nature.com/articles/s41556-020-0514-z).
 
 
 ## Nucleosome density
@@ -92,7 +92,7 @@ chr1	13200	13400	-0.891	0.0	0
 
 **Usage**: Nucleosome density are the input to the module `DNAICI.preprocess_omics_map2hic()` when preprocessing multi-omics datasets.
 
-**Note**: DNase-seq of nucleosome density in zero and one hour of E2 treated MCF7 cells were from literature [2](https://www.nature.com/articles/s41467-019-09320-9), while ATAC-Seq in tamoxifen-resistant MCF7TR cells were obtained from [5](https://www.nature.com/articles/s41556-020-0514-z).
+**Note**: DNase-seq of nucleosome density in zero and one hour of E2 treated MCF7 cells were from Ref [2](https://www.nature.com/articles/s41467-019-09320-9), while ATAC-Seq in tamoxifen-resistant MCF7TR cells were obtained from Ref [5](https://www.nature.com/articles/s41556-020-0514-z).
 
 
 ## Histone marker
@@ -112,10 +112,10 @@ chr1	521600	521800	1.410	5.43354
 
 **Usage**: Histone markers are the input to the module `DNAICI.preprocess_omics_map2hic()` when preprocessing multi-omics datasets.
 
-**Note**: ChIP-Seq of histone markers in zero and one hour of E2 treated MCF7 cells were from literature [2](https://www.nature.com/articles/s41467-019-09320-9), while ChIP-Seq in tamoxifen-resistant MCF7TR cells were obtained from [5](https://www.nature.com/articles/s41556-020-0514-z).
+**Note**: ChIP-Seq of histone markers in zero and one hour of E2 treated MCF7 cells were from Ref [[2]](https://www.nature.com/articles/s41467-019-09320-9), while ChIP-Seq in tamoxifen-resistant MCF7TR cells were obtained from Ref [[5]](https://www.nature.com/articles/s41556-020-0514-z).
 
 
-## references
+## References
 
 [1] Quinlan AR et al: BEDTools: a flexible suite of utilities for comparing genomic features. Bioinformatics 2010, 26(6):841-842.
 
