@@ -2,7 +2,9 @@
 
 ## FOREWORD
 
-To make the demo dataset more lightweight, only multi-omics data from chromosomes 18 and 19 in both untreated MCF7 cells and tamoxifen-resistant MCF7TR cells are included. To obtain consistent results with those in our paper, we recommend that you download and use the [FULL DATASET](https://drive.google.com/file/d/1YbdZ7y5bRNqbP_4hVt6rcZM2Om1PoA-b/view).
+To make the demo dataset more lightweight, only multi-omics data from chromosomes 18 and 19 in both untreated MCF7 cells and tamoxifen-resistant MCF7TR cells are included. For the data containing 23 chromosomes from MCF7 cells with untreated and one hour of E2 treated, as well as tamoxifen-resistant MCF7TR cells, we recommend that you download and use the [FULL DATASET](https://drive.google.com/file/d/1YbdZ7y5bRNqbP_4hVt6rcZM2Om1PoA-b/view). 
+
+ATTENTION: downloading and some steps of calculation might be time consuming, but you will get the same results as in our paper.
 
 ## hg19 data
 
