@@ -189,9 +189,7 @@ Construct subnetworks based on selected DIEGs
 
 
 
->**Note**: for more descriptions about parameters and functions, please refer to dnaici.py
-
-For more details, see the [homepage](https://dnaici.github.io/dnaici/) of this article.
+**Note**: For more details of parameters and functions, please refer to the main function dnaici.py. The description about input data can be found in [README.md](https://github.com/differential-network-analysis/dnaici/blob/master/demo/README.md). We have made a [WEBPAGE](https://dnaici.github.io/dnaici/) for this article. 
 
 
 
