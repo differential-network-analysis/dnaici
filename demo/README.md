@@ -3,7 +3,7 @@
 
 ## hg19 data
 
-**File**: `/demo/hg19/hg19.chrom.sizes.clear.sorted`
+**File**: `/hg19/hg19.chrom.sizes.clear.sorted`
 
 **Format**:
 
@@ -13,9 +13,9 @@ chr2	243199373
 ...
 ```
 
-**Description**: The file tells the names and sizes of each chromosome. It was downloaded from: [hg19 chrom size](https://hgdownload.cse.ucsc.edu/goldenpath/hg19/bigZips/).
+**Description**: The file tells the names and sizes of each chromosome. It was downloaded [HERE](https://hgdownload.cse.ucsc.edu/goldenpath/hg19/bigZips/).
 
-**File**: `/demo/hg19/hg19-blacklist.bed`.
+**File**: `/hg19/hg19-blacklist.bed`
 
 **Format**:
 
@@ -25,16 +25,16 @@ chr1	724136	727043	Satellite_repeat	1000	.
 ...
 ```
 
-**Description**: The black list file exclude a set of regions in the human genome that have anomalous, unstructured, high signal/read counts in next gen sequencing experiments independent of cell line and type of experiment. It was downloaded from: [hg19 black list](https://www.encodeproject.org/annotations/ENCSR636HFF/).
+**Description**: The black list file exclude a set of regions in the human genome that have anomalous, unstructured, high signal/read counts in next gen sequencing experiments independent of cell line and type of experiment. It was downloaded [HERE](https://www.encodeproject.org/annotations/ENCSR636HFF/).
 
-**Usage**: Chromosome size file and black list file is required by module `DNAICI.preprocess_hic_homer2bed()` to make bed file of window bin based on Bedtools [1](https://academic.oup.com/bioinformatics/article/26/6/841/244688).
+**Usage**: Chromosome size file and black list file is required by module `DNAICI.preprocess_hic_homer2bed()` to make bed file of window bin based on Bedtools [[1]](https://academic.oup.com/bioinformatics/article/26/6/841/244688).
 
-**Note**: If you want to use more recent hg38 block list, please refer to: [hg38 black list](https://www.nature.com/articles/s41598-019-45839-z).
+> **Note**: If you want to use more recent hg38 block list, please refer [HERE](https://www.nature.com/articles/s41598-019-45839-z).
 
 
 ## Hi-C interaction
 
-**File**: `/demo/hic_data/hicup_processed/t0/chr1.tags.tsv`
+**Example file**: `/hic_data/hicup_processed/t0/chr1.tags.tsv`
 
 **Format**:
 
@@ -44,9 +44,9 @@ chr1	57001	1	0.5	54	chr5	71005979	1	55
 ...
 ```
 
-**Description**: Hi-C raw data in MCF7 cells with zero hour and one hour of E2 treated, as well as tamoxifen-resistant MCF7TR cells. Each row of it represents a inter- or intra- chromosomal interaction. The data were obtained from publication [2](https://www.nature.com/articles/s41467-019-09320-9).
+**Description**: Hi-C raw data in MCF7 cells with zero hour and one hour of E2 treated, as well as tamoxifen-resistant MCF7TR cells. Each row of it represents a inter- or intra- chromosomal interaction. The data were obtained from publication [[2]](https://www.nature.com/articles/s41467-019-09320-9).
 
-**Usage**: Hi-C raw data are the input to the module `DNAICI.preprocess_hic_tag2homer()`. Software HOMER is needed to to filter and reorganize significant intra-chromosomal Hi-C interactions [3](https://www.cell.com/molecular-cell/pdf/S1097-2765(10)00366-7.pdf).
+**Usage**: Hi-C raw data are the input to the module `DNAICI.preprocess_hic_tag2homer()`. Software HOMER is needed to to filter and reorganize significant intra-chromosomal Hi-C interactions [[3]](https://www.cell.com/molecular-cell/pdf/S1097-2765(10)00366-7.pdf).
 
 **Note**: folders 't0' and 'untreated' include Hi-C data with zero hour E2 treated in MCF7 cells, 't1' contains one hour E2 treated Hi-C data in MCF7 cells, 'tamr' represents Hi-C data in tamoxifen-resistant MCF7TR cells.
 
