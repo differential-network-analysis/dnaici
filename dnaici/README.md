@@ -1,5 +1,6 @@
 # README for DNAICI USERS
 
+## DNAICI: Differential Network Analysis in Intra-chromosomal Community Interaction
 
 
 ## STEP 0. Load DNAICI package and initialize global parameters
