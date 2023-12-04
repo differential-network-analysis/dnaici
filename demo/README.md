@@ -1,5 +1,8 @@
 # A NOTE ON THE INPUT DEMO DATA USED IN DNAICI
 
+## FOREWORD
+
+To make the demo dataset more lightweight, only multi-omics data from chromosomes 18 and 19 in both untreated MCF7 cells and tamoxifen-resistant MCF7TR cells are included. To obtain consistent results with those in our paper, we recommend that you download and use the [FULL DATASET](https://drive.google.com/file/d/1YbdZ7y5bRNqbP_4hVt6rcZM2Om1PoA-b/view).
 
 ## hg19 data
 
