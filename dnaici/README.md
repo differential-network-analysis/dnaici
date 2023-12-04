@@ -187,12 +187,9 @@ Construct subnetworks based on selected DIEGs
 
 `dna.estimate_community_size(cohort, chromosome)`
 
+***
 
-
-**Note**: For more details of parameters and functions, please refer to the main function [dnaici.py](). The description about input data can be found in [README.md](https://github.com/differential-network-analysis/dnaici/blob/master/demo/README.md). We have made a [WEBPAGE](https://dnaici.github.io/dnaici/) for this article. 
-
-
-
+More details about parameters, functions, and modules can be found in the main function [dnaici.py](https://github.com/differential-network-analysis/dnaici/blob/master/dnaici/dnaici/dnaici.py). For instructions on input demo data, please refer to [README.md](https://github.com/differential-network-analysis/dnaici/blob/master/demo/README.md). To obtain consistent results with those in our paper, we recommend that you download and use the [FULL DATASET](https://drive.google.com/file/d/1YbdZ7y5bRNqbP_4hVt6rcZM2Om1PoA-b/view?usp=drive_link). For supplementary files, a [HOMEPAGE](https://dnaici.github.io/dnaici/) about the paper is under development...
 
 
 
