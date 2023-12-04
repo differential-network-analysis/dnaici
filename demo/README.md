@@ -34,7 +34,7 @@ chr1	724136	727043	Satellite_repeat	1000	.
 
 ## Hi-C interaction
 
-**Example file**: `/hic_data/hicup_processed/t0/chr1.tags.tsv`
+**Example file**: `/hic_data/hicup_processed/tamr/chr18.tags.tsv`
 
 **Format**:
 
