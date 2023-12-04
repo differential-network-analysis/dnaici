@@ -29,7 +29,7 @@ chr1	724136	727043	Satellite_repeat	1000	.
 
 **Usage**: Chromosome size file and black list file is required by module `DNAICI.preprocess_hic_homer2bed()` to make bed file of window bin based on Bedtools [[1]](https://academic.oup.com/bioinformatics/article/26/6/841/244688).
 
-> **Note**: If you want to use more recent hg38 block list, please refer [HERE](https://www.nature.com/articles/s41598-019-45839-z).
+> **Note**: You can use more recent [hg38](https://www.nature.com/articles/s41598-019-45839-z) block list.
 
 
 ## Hi-C interaction
