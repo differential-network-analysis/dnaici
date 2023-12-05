@@ -34,7 +34,7 @@ chr1	724136	727043	Satellite_repeat	1000	.
 
 **Usage**: Chromosome size file and black list file is required by module `DNAICI.preprocess_hic_homer2bed()` to make bed file of window bin based on Bedtools from Ref [[1]](https://academic.oup.com/bioinformatics/article/26/6/841/244688).
 
-> **Note**: You can use more recent [hg38](https://www.nature.com/articles/s41598-019-45839-z) block list.
+> **Note**: More recent hg38 block list can be found [HERE](https://www.nature.com/articles/s41598-019-45839-z).
 
 
 ## Hi-C interaction
@@ -53,12 +53,12 @@ chr18	33411	0	0.5	35	chr18	20874150	0	44
 
 **Usage**: Hi-C raw data are the input to the module `DNAICI.preprocess_hic_tag2homer()`. Software HOMER from Ref [[3]](https://www.cell.com/molecular-cell/pdf/S1097-2765(10)00366-7.pdf) is needed to filter and reorganize significant intra-chromosomal Hi-C interactions.
 
-> **Note**: folders 'untreated' and 'tamr' include Hi-C data in untreated MCF7 cells and tamoxifen-resistant MCF7TR cells.
+> **Note**: Folders 'untreated' and 'tamr' include Hi-C data in untreated MCF7 cells and tamoxifen-resistant MCF7TR cells, respectively. Due to size limitation, chr18.tags.tsv and chr19.tags.tsv are compressed and uploaded. Users need to unzip these two .gz files to calculate.
 
 
 ## Gene expresion
 
-**File**: `/demo/expression_data/mcf7_t0_geneExp.bed`
+**Example file**: `/expression_data/mcf7_tamr_geneExp.bed`
 
 **Format**:
 
@@ -69,16 +69,16 @@ chr1	367640	368634	-0.8728869158218728	OR4F29	729759	+	ENSG00000284733	244.64538
 ...
 ```
 
-**Description**: Microarray expression profiles of genes in zero and one hour of E2 treated MCF7 cells, as well as RNA-Seq data in tamoxifen-resistant MCF7TR cells. Each row tells the gene name and its zscore value in a certain region.
+**Description**: Microarray expression profiles of genes in untreated MCF7 cells and tamoxifen-resistant MCF7TR cells. Each row tells the gene name and its zscore value in a certain region. MicroRNAs of genes in zero and one hour of E2 treated MCF7 cells were from Ref [[4]](https://www.sciencedirect.com/science/article/pii/S0002944010600090), while RNA-Seq data in tamoxifen-resistant MCF7TR cells were obtained from Ref [[5]](https://www.nature.com/articles/s41556-020-0514-z).
 
 **Usage**: Gene expresion are the input to the module `DNAICI.preprocess_omics_map2hic()` when preprocessing multi-omics datasets.
 
-**Note**: MicroRNAs of genes in zero and one hour of E2 treated MCF7 cells were from Ref [4](https://www.sciencedirect.com/science/article/pii/S0002944010600090), while RNA-Seq data in tamoxifen-resistant MCF7TR cells were obtained from Ref [5](https://www.nature.com/articles/s41556-020-0514-z).
+> **Note**: `/expression_data/rna_count.txt` record the count value file
 
 
 ## Nucleosome density
 
-**File**: `/demo/nucleosome_density_data/mcf7_t0_DNas_200b.bed`
+**File**: `/nucleosome_density_data/mcf7_t0_DNas_200b.bed`
 
 **Format**:
 
@@ -97,7 +97,7 @@ chr1	13200	13400	-0.891	0.0	0
 
 ## Histone marker
 
-**File**: `/demo/histone_data/mcf7_t0_ctcf_200b.bed`
+**File**: `/histone_data/mcf7_t0_ctcf_200b.bed`
 
 **Format**:
 
