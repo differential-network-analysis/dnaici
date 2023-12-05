@@ -2,12 +2,24 @@
 
 ## DNAICI: Differential Network Analysis in Intra-chromosomal Community Interaction
 
+## FOREWORD
+
+The README file provides instructions for analyzing [demo data](https://github.com/differential-network-analysis/dnaici/tree/master/demo). The default values for parameters (e.g. `cohort = 'untreated'`, `chromosome = ['chr18','chr19']`) are designed for demo data. For more details about demo data, please refer to [README.md](https://github.com/differential-network-analysis/dnaici/blob/master/demo/README.md).
+
+The DNAICI pipeline consists of three main mudules
+* `preprocess`: preprocess_hic, preprocess_omics
+* `analysis`: cluster, enrichment, network, dieg
+* `parameter`: estimate
+
+The module `preprocess` contains two parts for the preprocessing of raw Hi-C data and other omics data. Four parts in the `analysis` module are used for integrated analysis of multi-omics data. The `parameter` module are used to estimate the optimal values of two tuning parameters. All the above modules depend on two support modules: `tools` and `bin`.
+
+To obtain consistent results with those in our paper, we recommend that you download and use the [full data](https://drive.google.com/file/d/1YbdZ7y5bRNqbP_4hVt6rcZM2Om1PoA-b/view?usp=drive_link). Necessary adjustment to the parameters need to be made for analyzing the full data. 
 
 ## STEP 0. Load DNAICI package and initialize global parameters
 
-`from dnaici import dnaici`
+HOMER and Bedtools are required by data preprocessing. Java environment and ModularityOptimizer.jar are required by clustering algorithm.
 
-**Required**: HOMER and Bedtools are required by data preprocessing, java environment and ModularityOptimizer.jar are required by clustering algorithm.
+`from dnaici import dnaici`
 
 `dna = dnaici.DNAICI(in_data_folder, out_data_folder)`
 
@@ -190,7 +202,7 @@ Construct subnetworks based on selected DIEGs
 
 ***
 
-More details about parameters, functions, and modules can be found in the main function [dnaici.py](https://github.com/differential-network-analysis/dnaici/blob/master/dnaici/dnaici/dnaici.py). For instructions on input demo data, please refer to [README.md](https://github.com/differential-network-analysis/dnaici/blob/master/demo/README.md). To obtain consistent results with those in our paper, we recommend that you download and use the [FULL DATASET](https://drive.google.com/file/d/1YbdZ7y5bRNqbP_4hVt6rcZM2Om1PoA-b/view?usp=drive_link). For supplementary files, a [HOMEPAGE](https://dnaici.github.io/dnaici/) about the paper is under development...
+More details about parameters, functions, and modules can be found in the main function [dnaici.py](https://github.com/differential-network-analysis/dnaici/blob/master/dnaici/dnaici/dnaici.py). For supplementary files, a [HOMEPAGE](https://dnaici.github.io/dnaici/) about the paper is under development...
 
 
 
