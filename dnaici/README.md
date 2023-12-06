@@ -19,49 +19,58 @@ To obtain consistent results with those in our paper, we recommend that you down
 
 HOMER and Bedtools are required by data preprocessing. Java environment and ModularityOptimizer.jar are required by clustering algorithm.
 
-`from dnaici import dnaici`
+```python
+from dnaici import dnaici
+dna = dnaici.DNAICI(in_data_folder, out_data_folder, cohort = 'untreated', chromosome = ['chr18', 'chr19'], resolution = 500000)
+```
 
-`dna = dnaici.DNAICI(in_data_folder, out_data_folder)`
+> ***Parameters:***
+>
+> ***in_data_folder***: Input data directory where Hi-C, gene expression, nucleosome density, histone marker, and chromosome regions hg19 are deposited.
+>
+> ***out_data_folder***: Output data directory where processed Hi-C, gene expression, nucleosome density, histone marker and other analysis results are deposited.
+> 
+> ***cohort***: The experimental condition for input data. The default is `'untreated'`, representing untreated MCF7 cell line. It can be changed to `'tamr'` for demo data, or `'t0'` and `'t1'` for full data.
+>
+> ***chromosome***: List of chromosomes you want to investigate. The default is `['chr18', 'chr19']`. If you want to get the complete results for 23 chromosomes, please let the input be `'whole_genome'`.
+>
+> ***resolution***: The resolution is used to divide the chromosome into equally sized window bin for analysis. The default is `500000`, representing 500 kilobase pair.
 
-**Required**
-    
-    in_data_folder: the directory where Hi-C, gene expression, nucleosome density, histone marker, and chromosome regions hg19 are deposited.
-    
-    out_data_folder: the directory where you want to export files.
-    
-**Optional** 
-    
-    cohort: Default = 'untreated'. 
-    
-    chromosome: Default = ['chr18','chr19'].
-    
-    resolution: Default = 500000.
-
->**Note**: If you want to get the complete results for 23 chromosomes, please let the input of chromosome be 'whole_genome'. Whole genome analysis is time consuming, please be careful and patient.
-
-## STEP 1. Preprocess multi_omics data
-## STEP 1.1. Preprocess Hi-C data
-
-**Required**: 'super resolution' is required by preprocess_hic_tag2homer
-
-**Optional**: p_value (Default = 0.1), zscore (Default = 1.0)
-
-`dna.preprocess_hic_tag2homer(super_resolution)`
-
-**Required**: None
-
-**Optional**: genome_version (Default = 'hg19'), fig_dpi (Default = 300)
-
-`dna.preprocess_hic_homer2bed()`
+**Note**: Currently, DNAICI cannot be downloaded using `pip install dnaici`.
 
 
-## STEP 1.2 Preprocess multi-omics data
+## STEP 1.1 Preprocess multi-omics data: Preprocess Hi-C data
+
+This section is designed for data preprocessing of raw data.
+
+Firstly, applying HOMER to HICUP data to filter and reorganize significant intra-chromosomal interactions. `super_resolution`, `p_value`, and `zscore` are parameters required by HOMER for selecting significant interactions. Output data can be found in `'/out_data_folder/hic_data/hic_interaction_homer'`.
+
+```python
+dna.preprocess_hic_tag2homer(super_resolution, p_value = 0.1, zscore = 1.0)
+```
+> ***Parameters:***
+>
+> ***in_data_folder***: Input data directory where Hi-C, gene expression, nucleosome density, histone marker, and chromosome regions hg19 are deposited.
+>
+> ***out_data_folder***: Output data directory where processed Hi-C, gene expression, nucleosome density, histone marker and other analysis results are deposited.
+> 
+> ***cohort***: The experimental condition for input data. The default is 'untreated', representing untreated MCF7 cell line. It can be changed to 'tamr' for demo data, or 't0' and 't1' for full data.
+
+
+```python
+dna.preprocess_hic_homer2bed(genome_version = 'hg19', fig_dpi = 300)
+```
+
+
+## STEP 1.2 Preprocess multi-omics data: Preprocess multi-omics data
 
 **Required**: 'multi_omics' is required by preprocess_omics_map2hic. Only accept 'gene expression', 'nucleosome density', and 'histone marker'
 
 **Optional**: None
 
-`dna.preprocess_omics_map2hic(multi_omics)`
+```python
+dna.preprocess_omics_map2hic(multi_omics)`
+```
 
 **Required**: 'multi_omics', 'type_of_calculation' is required by preprocess_omics_heatmap. 'multi_omics' should be 'gene expression', 'nucleosome density', or 'histone marker'. 'type_of_calculation' should be 'mean' or 'max'
 
