@@ -13,7 +13,7 @@ The DNAICI pipeline consists of three main mudules
 
 The module `preprocess` contains two parts for the preprocessing of raw Hi-C data and other omics data. Four parts in the `analysis` module are used for integrated analysis of multi-omics data. The `parameter` module are used to estimate the optimal values of two tuning parameters. All the above modules depend on two support modules: `tools` and `bin`.
 
-To obtain consistent results with those in our paper, we recommend that you download and use the [full data](https://drive.google.com/file/d/1YbdZ7y5bRNqbP_4hVt6rcZM2Om1PoA-b/view?usp=drive_link). Necessary adjustments to the parameters need to be made for analyzing the full data. 
+To obtain consistent results with those in our paper, we recommend that you download and use the [full data](https://drive.google.com/file/d/1YbdZ7y5bRNqbP_4hVt6rcZM2Om1PoA-b/view?usp=drive_link). Necessary adjustments to the parameters need to be made for analysis. Full data analysis is time consuming, please be careful and patient. 
 
 ## STEP 0. Load DNAICI package and initialize global parameters
 
