@@ -76,15 +76,16 @@ Output data including heatmap of interactions, are stored in `'/out_data_folder/
 **Optional**: None
 
 ```python
-dna.preprocess_omics_map2hic(multi_omics)`
+dna.preprocess_omics_map2hic(multi_omics)
 ```
 
 **Required**: 'multi_omics', 'type_of_calculation' is required by preprocess_omics_heatmap. 'multi_omics' should be 'gene expression', 'nucleosome density', or 'histone marker'. 'type_of_calculation' should be 'mean' or 'max'
 
 **Optional**: color_start (Default = -2), color_end (Default = 2), bar_start (Default = 0), bar_end (Default = 0), fig_dpi (Default = 300)
 
-`dna.preprocess_omics_heatmap(multi_omics, type_of_calculation)`
-
+```python
+dna.preprocess_omics_heatmap(multi_omics, type_of_calculation)
+```
 
 ## STEP 2 Identify intra-chromosomal communities
 ## STEP 2.1. Cluster Hi-C interactions to communities
@@ -95,7 +96,9 @@ Identify communities using Hi-C data
 
 **Optional**: modularity_function (Default = 1), resolution_parameter (Default = 1.0), optimization_algorithm (Default = 3), n_random_starts (Default = 10), n_iterations (Default = 100), random_seed (Default = 0), print_output (Default = 1)
 
-`dna.cluster_for_hic()`
+```python
+dna.cluster_for_hic()
+```
 
 Transform cluter results into json format
 
@@ -103,7 +106,9 @@ Transform cluter results into json format
 
 **Optional**: None
 
-`dna.cluster_to_json()`
+```python
+dna.cluster_to_json()
+```
 
 Export the heatmaps for clustered Hi-C interactions and genomic features in each community
 
@@ -111,7 +116,9 @@ Export the heatmaps for clustered Hi-C interactions and genomic features in each
 
 **Optional**: minCluster_size (Default = 20), fig_dpi (Default = 300)
 
-`dna.cluster_community_structure()`
+```python
+dna.cluster_community_structure()
+```
 
 **Note**: minCluster_size smaller than 3 is not accepted.
 
@@ -121,8 +128,9 @@ Make a super network based on cluster labels of nodes
 
 **Optional**: minCluster_size (Default = 20), fig_dpi (Default = 300)
 
-`dna.cluster_super_network()`
-
+```python
+dna.cluster_super_network()
+```
 
 ## STEP 2.2. Enrichment of genomic feature 
 
@@ -132,7 +140,9 @@ Random permutation test of genomic features within each community
 
 **Optional**: permutation (Default = 100), pval_cutoff (Default = 0.01), fig_dpi (Default = 300)
 
-`dna.enrichment_permutation()`
+```python
+dna.enrichment_permutation()
+```
 
 Heatmaps of genomic feature enrichment
 
@@ -140,8 +150,9 @@ Heatmaps of genomic feature enrichment
 
 **Optional**: permutation (Default = 100), fig_dpi (Default = 300)
 
-`dna.enrichment_heatmap()`
-
+```python
+dna.enrichment_heatmap()
+```
 
 ## STEP 3 Differential network analysis
 ## STEP 3.1. Differential interacting nodes
@@ -152,7 +163,9 @@ Find centrality of nodes in Hi-C networks
 
 **Optional**: permutation (Default = 100)
 
-`dna.network_centrality()`
+```python
+dna.network_centrality()
+```
 
 **Note**: The following analysis requires completing the above steps for two cohorts!
 
@@ -162,7 +175,9 @@ Screen for significant nodes between networks from two cohorts
 
 **Optional**: pval_cutoff (Default = 0.05), permutation (Default = 100), fig_dpi (Default = 300)
 
-`dna.network_sigNodes(cohort1, cohort2, chromosome)`
+```python
+dna.network_sigNodes(cohort1, cohort2, chromosome)
+```
 
 Compare significant nodes with the information from feature data 
 
@@ -170,8 +185,9 @@ Compare significant nodes with the information from feature data
 
 **Optional**: pval_cutoff (Default = 0.05)
 
-`dna.network_comparison(cohort1, cohort2, chromosome)`
-
+```python
+dna.network_comparison(cohort1, cohort2, chromosome)
+```
 
 ## STEP 3.2. Enrichment and network analysis
 
@@ -183,7 +199,9 @@ Gene enrichment anaysis based on identified DIEGs from DIGs
 
 **Optional**: method (Default = 'relativeRatio'), pval_cutoff (Default = 0.05), fig_dpi (Default = 300)
 
-`dna.diegs_enrichment(cohort1, cohort2)`
+```python
+dna.diegs_enrichment(cohort1, cohort2)
+```
 
 Construct subnetworks based on selected DIEGs
 
@@ -191,7 +209,9 @@ Construct subnetworks based on selected DIEGs
 
 **Optional**: pval_cutoff (Default = 0.05)
 
-`dna.diegs_subnetwork(cohort1, cohort2, chromosome)`
+```python
+dna.diegs_subnetwork(cohort1, cohort2, chromosome)
+```
 
 
 ## STEP S. Estimate tuning parameters
@@ -206,7 +226,9 @@ Construct subnetworks based on selected DIEGs
 
 **Optional**: fig_dpi (Default = 300)
 
-`dna.estimate_resolution(chromosome, cal_type, cohort1, cohort2)`
+```python
+dna.estimate_resolution(chromosome, cal_type, cohort1, cohort2)
+```
 
 **Note**: The following analysis requires the first two functions in STEP 2.1.Cluster Hi-C interactions to communities finished (`dna.cluster_for_hic()` and `dna.cluster_to_json()`).  It is recommended to get the optimal cutoff by using all 23 chromosomes
 
@@ -214,7 +236,9 @@ Construct subnetworks based on selected DIEGs
 
 **Optional**: cutoff4Proportion (float = 0.02), fig_dpi (Default = 300)
 
-`dna.estimate_community_size(cohort, chromosome)`
+```python
+dna.estimate_community_size(cohort, chromosome)
+```
 
 ***
 
