@@ -80,13 +80,18 @@ dna.preprocess_omics_map2hic(multi_omics)
 >
 > ***multi_omics***: Only accept 'gene expression', 'nucleosome density', and 'histone marker' currently. Other omics data can also be added if they have been appropriately prepared.
 
-**Required**: 'multi_omics', 'type_of_calculation' is required by preprocess_omics_heatmap. 'multi_omics' should be 'gene expression', 'nucleosome density', or 'histone marker'. 'type_of_calculation' should be 'mean' or 'max'
-
-**Optional**: color_start (Default = -2), color_end (Default = 2), bar_start (Default = 0), bar_end (Default = 0), fig_dpi (Default = 300)
+Output data can be found in `'/out_data_folder/multi_omics/resolution/out_data'`.
 
 ```python
-dna.preprocess_omics_heatmap(multi_omics, type_of_calculation)
+dna.preprocess_omics_heatmap(multi_omics, type_of_calculation, color_start = -2, color_end = 2, bar_start = 0, bar_end = 0, fig_dpi = 300)
 ```
+> **Parameters:**
+>
+> ***multi_omics***: Only accept 'gene expression', 'nucleosome density', and 'histone marker' currently. Other omics data can also be added if they have been appropriately prepared.
+> 
+> ***type_of_calculation***: Two options for the value of multi-omics data in the crossed window. It should be setted as 'mean' or 'max'.
+
+Output zscore matrices and heatmaps are stored in `'/out_data_folder/multi_omics/resolution/out_plot'`.
 
 ## STEP 2 Identify intra-chromosomal communities
 ## STEP 2.1. Cluster Hi-C interactions to communities
