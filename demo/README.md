@@ -34,11 +34,9 @@ chr18	105658	112233	Satellite_repeat	1000	.
 ...
 ```
 
-**Description**: The black list file exclude a set of regions in the human genome that have anomalous, unstructured, high signal/read counts in next gen sequencing experiments independent of cell line and type of experiment. It was downloaded [HERE](https://www.encodeproject.org/annotations/ENCSR636HFF/).
+**Description**: The black list file exclude a set of regions in the human genome that have anomalous, unstructured, high signal/read counts in next gen sequencing experiments independent of cell line and type of experiment. It was downloaded [HERE](https://www.encodeproject.org/annotations/ENCSR636HFF/). More recent hg38 block list can be found [HERE](https://www.nature.com/articles/s41598-019-45839-z).
 
 **Usage**: Chromosome size file and black list file is required by module `DNAICI.preprocess_hic_homer2bed()` to make bed file of window bin based on Bedtools from Ref [[1]](https://academic.oup.com/bioinformatics/article/26/6/841/244688).
-
-> **Note**: More recent hg38 block list can be found [HERE](https://www.nature.com/articles/s41598-019-45839-z).
 
 
 ## Hi-C interaction
