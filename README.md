@@ -1,4 +1,4 @@
-#  Short Guide to DANICI and Demo
+#  Short Guides to DANICI and Demo
 ## DNAICI: Differential Network Analysis in Intra-chromosomal Community Interaction
 
 :lock: [DEMO](https://github.com/differential-network-analysis/dnaici/tree/master/demo)
