@@ -71,13 +71,14 @@ Output data including heatmap of interactions, are stored in `'/out_data_folder/
 
 ## STEP 1.2 Preprocess multi-omics data: Preprocess multi-omics data
 
-**Required**: 'multi_omics' is required by preprocess_omics_map2hic. Only accept 'gene expression', 'nucleosome density', and 'histone marker'
-
-**Optional**: None
+. Genomic feature matrices were constructed by mapping multi-omics datasets to adjacency matrices obtained from Hi-C data. Input data are deposited in `'/in_data_folder/multi_omics'`. 
 
 ```python
 dna.preprocess_omics_map2hic(multi_omics)
 ```
+> **Parameters:**
+>
+> ***multi_omics***: Only accept 'gene expression', 'nucleosome density', and 'histone marker' currently. Other omics data can also be added if they have been appropriately prepared.
 
 **Required**: 'multi_omics', 'type_of_calculation' is required by preprocess_omics_heatmap. 'multi_omics' should be 'gene expression', 'nucleosome density', or 'histone marker'. 'type_of_calculation' should be 'mean' or 'max'
 
