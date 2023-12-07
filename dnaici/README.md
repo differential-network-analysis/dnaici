@@ -39,7 +39,7 @@ dna = dnaici.DNAICI(in_data_folder, out_data_folder, cohort = 'untreated', chrom
 **Note**: Currently, DNAICI cannot be downloaded using `pip install dnaici`.
 
 
-## STEP 1.1 Preprocess multi-omics data: Preprocess Hi-C data
+## STEP 1.1 Preprocess Hi-C data
 
 The section is designed for data preprocessing of raw omics data. Firstly, applying HOMER to raw Hi-C data (HICUP) to filter and reorganize significant intra-chromosomal interactions. Input data are located in `'/in_data_folder/hic_data/hicup_processed/cohort'`. 
 
@@ -56,7 +56,7 @@ dna.preprocess_hic_tag2homer(super_resolution, p_value = 0.1, zscore = 1.0)
 
 Output data can be found in `'/out_data_folder/hic_data/hic_interaction_homer'`.
 
-Then, BEDTools is used to convert HOMER exported significant interactions to bed format files. Input data are previously selected significant intra-chromosomal Hi-C interactions from `dna.preprocess_hic_tag2homer()`, which are deposited in `'/out_data_folder/hic_data/hic_interaction_homer'`. 
+Then, BEDTools is used to convert HOMER exported significant interactions to bed format files and Hi-C adjacency matrices are build with predefined resolution. Input data are previously selected significant intra-chromosomal Hi-C interactions from `dna.preprocess_hic_tag2homer()`, which are deposited in `'/out_data_folder/hic_data/hic_interaction_homer'`. 
 
 ```python
 dna.preprocess_hic_homer2bed(genome_version = 'hg19', fig_dpi = 300)
@@ -69,9 +69,9 @@ dna.preprocess_hic_homer2bed(genome_version = 'hg19', fig_dpi = 300)
 
 Output data including heatmap of interactions, are stored in `'/out_data_folder/hic_data/hic_interaction_bed'`.
 
-## STEP 1.2 Preprocess multi-omics data: Preprocess multi-omics data
+## STEP 1.2 Preprocess multi-omics data
 
-. Genomic feature matrices were constructed by mapping multi-omics datasets to adjacency matrices obtained from Hi-C data. Input data are deposited in `'/in_data_folder/multi_omics'`. 
+For other omics data, genomic feature matrices were constructed by mapping multi-omics datasets to adjacency matrices obtained from Hi-C data. Input data are deposited in `'/in_data_folder/multi_omics'`. 
 
 ```python
 dna.preprocess_omics_map2hic(multi_omics)
