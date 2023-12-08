@@ -41,7 +41,7 @@ dna = dnaici.DNAICI(in_data_folder, out_data_folder, cohort = 'untreated', chrom
 
 ## STEP 1.1 Preprocess Hi-C data
 
-The section is designed for data preprocessing of raw omics data. Firstly, applying HOMER to raw Hi-C data (HICUP) to filter and reorganize significant intra-chromosomal interactions. Input data are located in `'/in_data_folder/hic_data/hicup_processed/cohort'`. 
+The section is designed for data preprocessing of raw omics data. Firstly, applying HOMER to raw Hi-C data (HICUP) to filter and reorganize significant intra-chromosomal interactions. 
 
 ```python
 dna.preprocess_hic_tag2homer(super_resolution, p_value = 0.1, zscore = 1.0)
@@ -54,9 +54,9 @@ dna.preprocess_hic_tag2homer(super_resolution, p_value = 0.1, zscore = 1.0)
 > 
 > ***zscore***: Cutoff for intra-chromosomal interactions. The default is `1.0`.
 
-Output data can be found in `'/out_data_folder/hic_data/hic_interaction_homer'`.
+The input data are located in `'/in_data_folder/hic_data/hicup_processed/cohort'` while the output data can be found in `'/out_data_folder/hic_data/hic_interaction_homer'`.
 
-Then, BEDTools is used to convert HOMER exported significant interactions to bed format files and Hi-C adjacency matrices are build with predefined resolution. Input data are previously selected significant intra-chromosomal Hi-C interactions from `dna.preprocess_hic_tag2homer()`, which are deposited in `'/out_data_folder/hic_data/hic_interaction_homer'`. 
+Then, BEDTools is used to convert HOMER exported significant interactions to bed format files and Hi-C adjacency matrices are build with predefined resolution. 
 
 ```python
 dna.preprocess_hic_homer2bed(genome_version = 'hg19', fig_dpi = 300)
@@ -67,31 +67,36 @@ dna.preprocess_hic_homer2bed(genome_version = 'hg19', fig_dpi = 300)
 >
 > ***fig_dpi***: Figure resolution in dots per inch. The default is `300`.
 
-Output data including heatmap of interactions, are stored in `'/out_data_folder/hic_data/hic_interaction_bed'`.
+The input data are previously selected significant intra-chromosomal Hi-C interactions from `dna.preprocess_hic_tag2homer()`, which are deposited in `'/out_data_folder/hic_data/hic_interaction_homer'`. The output data including heatmap of interactions, are stored in `'/out_data_folder/hic_data/hic_interaction_bed'`.
 
 ## STEP 1.2 Preprocess multi-omics data
 
-For other omics data, genomic feature matrices were constructed by mapping multi-omics datasets to adjacency matrices obtained from Hi-C data. Input data are deposited in `'/in_data_folder/multi_omics'`. 
+For other omics data, they are first organized into bed format files.
 
 ```python
 dna.preprocess_omics_map2hic(multi_omics)
 ```
 > **Parameters:**
 >
-> ***multi_omics***: Only accept 'gene expression', 'nucleosome density', and 'histone marker' currently. Other omics data can also be added if they have been appropriately prepared.
+> ***multi_omics***: Only accept `'gene expression'`, `'nucleosome density'`, and `'histone marker'` currently. Other omics data can also be added if they have been appropriately prepared.
 
-Output data can be found in `'/out_data_folder/multi_omics/resolution/out_data'`.
+The input data come from `'/in_data_folder/multi_omics'` while the output data can be found in `'/out_data_folder/multi_omics/resolution/out_data'`.
+
+Then, multi-omics datasets are mapped to the Hi-C adjacency matrices and heatmaps are drawn based on the genomic feature matrices.
 
 ```python
-dna.preprocess_omics_heatmap(multi_omics, type_of_calculation, color_start = -2, color_end = 2, bar_start = 0, bar_end = 0, fig_dpi = 300)
+dna.preprocess_omics_heatmap(multi_omics, type_of_calculation, fig_dpi = 300)
 ```
 > **Parameters:**
 >
-> ***multi_omics***: Only accept 'gene expression', 'nucleosome density', and 'histone marker' currently. Other omics data can also be added if they have been appropriately prepared.
+> ***multi_omics***: Only accept `'gene expression'`, `'nucleosome density'`, and `'histone marker'` currently. Other omics data can also be added if they have been appropriately prepared.
 > 
-> ***type_of_calculation***: Two options for the value of multi-omics data in the crossed window. It should be setted as 'mean' or 'max'.
+> ***type_of_calculation***: Two options for the value of multi-omics data in the crossed window. It should be setted as `'mean'` or `'max'`.
+> 
+> ***fig_dpi***: Figure resolution in dots per inch. The default is `300`.
 
-Output zscore matrices and heatmaps are stored in `'/out_data_folder/multi_omics/resolution/out_plot'`.
+With the output of the previous function as input, the zscore matrix and heatmap are generated to `'/out_data_folder/multi_omics/resolution/out_plot'`
+
 
 ## STEP 2 Identify intra-chromosomal communities
 ## STEP 2.1. Cluster Hi-C interactions to communities
