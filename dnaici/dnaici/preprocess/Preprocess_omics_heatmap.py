@@ -48,10 +48,6 @@ def main(in_folder,
          multi_omics,
          type_of_calculation,
          out_folder,
-         color_start,
-         color_end,
-         bar_start,
-         bar_end,
          fig_dpi
          ):
     
@@ -109,7 +105,7 @@ def main(in_folder,
             matrix_end = matrix2.shape[1]
             
             #draw figure
-            draw_plot(matrix2, cell_type4plot, matrix_start, matrix_end, color_start, color_end, bar_start, bar_end, out_path, fig_dpi=fig_dpi)
+            draw_plot(matrix2, cell_type4plot, matrix_start, matrix_end, -2, 2, 0, 0, out_path, fig_dpi=fig_dpi)
             
             #export omics matrix
             print('Export data: ',out_f)
