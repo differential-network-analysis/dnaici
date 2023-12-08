@@ -98,24 +98,30 @@ dna.preprocess_omics_heatmap(multi_omics, type_of_calculation, fig_dpi = 300)
 With the output of the previous function as input, the zscore matrix and heatmap are generated to `'/out_data_folder/multi_omics/resolution/out_plot'`
 
 
-## STEP 2 Identify intra-chromosomal communities
-## STEP 2.1. Cluster Hi-C interactions to communities
+## STEP 2.1 Identify intra-chromosomal communities
 
-Identify communities using Hi-C data  
-
-**Required**: None
-
-**Optional**: modularity_function (Default = 1), resolution_parameter (Default = 1.0), optimization_algorithm (Default = 3), n_random_starts (Default = 10), n_iterations (Default = 100), random_seed (Default = 0), print_output (Default = 1)
+After preparing the Hi-C interaction matrices, clustering algorithm (ModularityOptimizer.jar) is used to identify network communities.
 
 ```python
-dna.cluster_for_hic()
+dna.cluster_for_hic(modularity_function = 1, resolution_parameter = 1.0, optimization_algorithm = 3, n_random_starts = 10, n_iterations = 100, random_seed = 0, print_output = 1)
 ```
+> **Parameters:**
+>
+> ***modularity_function***: The modularity function for clustering method where `1 = standard` and `2 = alternative`. The default is `1`. 
+> 
+> ***resolution_parameter***: The resolution of clustering method. The default is `1.0`. 
+> 
+> ***optimization_algorithm***: The selection of optimization algorithm where `1 = original Louvain algorithm`, `2 = Louvain algorithm with multilevel refinement`, and `3 = SLM algorithm`. The default is `3`. 
+>
+> ***n_random_starts***: The number of random starts for clustering. The default is `10`.
+> 
+> ***n_iterations***: The number of iterations per random start. The default is `100`.
+> 
+> ***random_seed***: The seed of the random number generator. The default is `0`.
+> 
+> ***print_output***: Whether or not to print output to the console (`0 = no`; `1 = yes`). The default is `1`.
 
-Transform cluter results into json format
-
-**Required**: None
-
-**Optional**: None
+Then, cluter results are transformed into json format.
 
 ```python
 dna.cluster_to_json()
