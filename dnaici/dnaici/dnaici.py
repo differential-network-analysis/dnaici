@@ -160,10 +160,6 @@ class DNAICI():
     def preprocess_omics_heatmap(self,
                                  multi_omics: str,
                                  type_of_calculation: str,
-                                 color_start: float = -2,
-                                 color_end: float = 2,
-                                 bar_start: float = 0,
-                                 bar_end: float = 0,
                                  fig_dpi: float = 300
                                  ):
         '''
@@ -181,14 +177,6 @@ class DNAICI():
             'gene expression', 'nucleosome density', 'histone marker' data.
         type_of_calculation : str. 
             DESCRIPTION. it should be setted as 'mean' or 'max'.
-        color_start : float, optional
-            DESCRIPTION. The start value of colorbar. The default is -2.
-        color_end : float, optional
-            DESCRIPTION. The end value of colorbar. The default is 2.
-        bar_start : float, optional
-            DESCRIPTION. The default is 0.
-        bar_end : float, optional
-            DESCRIPTION. The default is 0.
         fig_dpi : float, optional
             DESCRIPTION. Figure resolution in dots per inch. The default is 300.
 
@@ -200,8 +188,7 @@ class DNAICI():
         out_data_folder = self.out_data_folder
         # plot heatmaps of multi-omics data
         Preprocess_omics_heatmap.main(in_data_folder, cohort, chromosome, resolution, multi_omics,
-                                      type_of_calculation, out_data_folder, color_start, color_end,
-                                      bar_start, bar_end, fig_dpi)
+                                      type_of_calculation, out_data_folder, fig_dpi)
     
     
     def cluster_for_hic(self,
