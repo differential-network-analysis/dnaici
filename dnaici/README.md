@@ -150,28 +150,35 @@ dna.cluster_super_network(minCluster_size = 20, fig_dpi = 300)
 > 
 > ***fig_dpi***: Figure resolution in dots per inch. The default is `300`. 
 
+The exported super networks can be found in `'/out_data_folder/hic_data/resolution/hic_community_figures'`.
 
 ## STEP 2.2. Enrichment of genomic feature 
 
-Random permutation test of genomic features within each community
-
-**Required**: None
-
-**Optional**: permutation (Default = 100), pval_cutoff (Default = 0.01), fig_dpi (Default = 300)
+After dividing the chromosome into several valid structures, random permutation tests of enrichment are performed by comparing genomic features within and outside each community.
 
 ```python
-dna.enrichment_permutation()
+dna.enrichment_permutation(permutation = 100, pval_cutoff = 0.01, fig_dpi = 300)
 ```
+> **Parameters:**
+>
+> ***permutation***: Resampling times of random permutation test of genomic enrichment. The default is `100`.
+> 
+> ***pval_cutoff***: Cutoff for features in a community is significantly higher/lower than randomly selected samples. The default is `0.01`.
+> 
+> ***fig_dpi***: Figure resolution in dots per inch. The default is `300`. 
 
-Heatmaps of genomic feature enrichment
-
-**Required**: None
-
-**Optional**: permutation (Default = 100), fig_dpi (Default = 300)
+Then, draw both tval and pval of genomic feautre heatmaps from `enrichment_permutation`.
 
 ```python
-dna.enrichment_heatmap()
+dna.enrichment_heatmap(permutation = 100, fig_dpi = 300)
 ```
+> **Parameters:**
+>
+> ***permutation***: Number of sampling when doing permutation test in `enrichment_permutation`. The default is `100`.
+> 
+> ***fig_dpi***: Figure resolution in dots per inch. The default is `300`. 
+
+The permutation results are stored in `'/out_data_folder/hic_data/resolution/hic_community_figures'`.
 
 ## STEP 3 Differential network analysis
 ## STEP 3.1. Differential interacting nodes
