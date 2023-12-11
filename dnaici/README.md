@@ -121,32 +121,28 @@ dna.cluster_for_hic(modularity_function = 1, resolution_parameter = 1.0, optimiz
 > 
 > ***print_output***: Whether or not to print output to the console (`0 = no`; `1 = yes`). The default is `1`.
 
-Then, cluter results are transformed into json format.
+Then, cluter results like nodes and communities are organized into .tsv format, while networks are transformed into .json format. All these results can be found in `'/out_data_folder/hic_data/resolution/hic_community_data'`.
 
 ```python
 dna.cluster_to_json()
 ```
-
+Next, 
 Export the heatmaps for clustered Hi-C interactions and genomic features in each community
 
-**Required**: None
-
-**Optional**: minCluster_size (Default = 20), fig_dpi (Default = 300)
-
 ```python
-dna.cluster_community_structure()
+dna.cluster_community_structure(minCluster_size = 20, fig_dpi = 300)
 ```
+> **Parameters:**
+>
+> ***minCluster_size***: The minimum size (or number of interactions) of valid communities. It is recommeded to use modele `estimate_community_size` to identify the optimal value at a specific window resolution. The default is `20`. Value smaller than `3` is not accepted.
+> 
+> ***fig_dpi***: Figure resolution in dots per inch. The default is `300`. 
 
-**Note**: minCluster_size smaller than 3 is not accepted.
 
 Make a super network based on cluster labels of nodes
 
-**Required**: None
-
-**Optional**: minCluster_size (Default = 20), fig_dpi (Default = 300)
-
 ```python
-dna.cluster_super_network()
+dna.cluster_super_network(minCluster_size = 20, fig_dpi = 300)
 ```
 
 ## STEP 2.2. Enrichment of genomic feature 
