@@ -126,7 +126,7 @@ Then, cluter results like nodes and communities are organized into .tsv format, 
 ```python
 dna.cluster_to_json()
 ```
-Next, 
+Next, valid communities should be identified in all clusters
 Export the heatmaps for clustered Hi-C interactions and genomic features in each community
 
 ```python
@@ -134,16 +134,23 @@ dna.cluster_community_structure(minCluster_size = 20, fig_dpi = 300)
 ```
 > **Parameters:**
 >
-> ***minCluster_size***: The minimum size (or number of interactions) of valid communities. It is recommeded to use modele `estimate_community_size` to identify the optimal value at a specific window resolution. The default is `20`. Value smaller than `3` is not accepted.
+> ***minCluster_size***: The minimum size (or number of interactions) of valid communities. It is recommeded to use module `estimate_community_size` to identify the optimal value at a specific window resolution. The default is `20`. Value smaller than `3` is not accepted.
 > 
-> ***fig_dpi***: Figure resolution in dots per inch. The default is `300`. 
+> ***fig_dpi***: Figure resolution in dots per inch. The default is `300`.
 
+Through this, a summary of interactions and modularity score of network clustering and valid communities are exported to a table located in `'/out_data_folder/hic_data/resolution/hic_community_figures'`. 
 
 Make a super network based on cluster labels of nodes
 
 ```python
 dna.cluster_super_network(minCluster_size = 20, fig_dpi = 300)
 ```
+> **Parameters:**
+>
+> ***minCluster_size***: The minimum size (or number of interactions) of valid communities. It should be consistent with the value in `cluster_community_structure`. The default is `20`. Value smaller than `3` is not accepted.
+> 
+> ***fig_dpi***: Figure resolution in dots per inch. The default is `300`. 
+
 
 ## STEP 2.2. Enrichment of genomic feature 
 
