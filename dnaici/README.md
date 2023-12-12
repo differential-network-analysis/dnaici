@@ -272,29 +272,50 @@ The subnetworks, genomic features (histone markers of enhancer/repressor, gene e
 
 ## STEP S. Estimate tuning parameters
 
-**Note**: If you want to explore the full input data including 23 chromosomes, the computing will be quite time consuming, be careful and patient :)
+If you want to explore the full input data including 23 chromosomes, the computing will be quite time consuming, be careful and patient :)
 
-**Required**: Chromosome, cohort1 and cohort2 are required. cal_type is required and only 0, 1, 2, 3 are accepted:
+
     0: comparison between different resolution, 
     1: comparison between different super resolution with resolution equal to 50kb,
     2: comparison between different super resolution with resolution equal to 100kb,
     3: comparison between different super resolution with resolution equal to 500kb.
 
-**Optional**: fig_dpi (Default = 300)
-
 ```python
-dna.estimate_resolution(chromosome, cal_type, cohort1, cohort2)
+dna.estimate_resolution(chromosome, cal_type, cohort1, cohort2, fig_dpi = 300)
 ```
+> **Parameters:**
+>
+> ***chromosome***: The chromosome you want to investigate, i.e. `['chr1', 'chr2', ...]`. If you want to check all the chromosome, please use `'whole_genome'`. ATTENTION: whole genome estimation is recommended but time consuming.
+>
+> ***cal_type***: he type of calculation, where
+            `0`: comparison between different resolution, 
+            `1`: comparison between different super resolution with resolution equal to 50kb,
+            `2`: comparison between different super resolution with resolution equal to 100kb,
+            `3`: comparison between different super resolution with resolution equal to 500kb.
+>
+> ***cohort1***: Cohort 1 with all the above steps completed.
+> 
+> ***cohort2***: Cohort 2 with all the above steps completed.
+>
+> ***fig_dpi***: Figure resolution in dots per inch. The default is `300`.
+
 
 **Note**: The following analysis requires the first two functions in STEP 2.1.Cluster Hi-C interactions to communities finished (`dna.cluster_for_hic()` and `dna.cluster_to_json()`).  It is recommended to get the optimal cutoff by using all 23 chromosomes
 
-**Required**: cohort and chromosome are required.
-
-**Optional**: cutoff4Proportion (float = 0.02), fig_dpi (Default = 300)
 
 ```python
-dna.estimate_community_size(cohort, chromosome)
+dna.estimate_community_size(cohort, chromosome, cutoff4Proportion = 0.02), fig_dpi = 300)
 ```
+> **Parameters:**
+>
+> ***chromosome***: The chromosome you want to investigate, i.e. `['chr1', 'chr2', ...]`. If you want to check all the chromosome, please use `'whole_genome'`. ATTENTION: whole genome estimation is recommended but time consuming.
+>
+> ***cal_type***: he type of calculation, where
+> 
+> ***cal_type***: he type of calculation, where
+> 
+> ***cal_type***: he type of calculation, where
+
 
 ***
 
