@@ -30,24 +30,24 @@ class DNAICI():
                  out_data_folder: str,
                  cohort: str = 'untreated', 
                  chromosome: list = ['chr18','chr19'],
-                 resolution: int = 500000,
+                 resolution: int = 500000
                  ):
         '''
         Initialize DNAICI with user-defined parameters
         ----------
         Parameters
         ----------
-        in_data_folder : str, optional
+        in_data_folder : str
             DESCRIPTION. Input data directory, including Hi-C, gene expression, nucleosome density, 
             histone marker, and chromsome regions hg19 data in this folder.
-        out_data_folder : str, optional
+        out_data_folder : str
             DESCRIPTION. output data directory including processed Hi-C, gene expression, nucleosome
             density, histone marker and computational results in it.
         cohort : str, optional
-            DESCRIPTION. The experimental condition for input data. The default is 't0', 
-            representing 0 hour E2-treated MCF7 cell line.
+            DESCRIPTION. The experimental condition for input data. The default is 'untreated', 
+            representing untreated MCF7 cell line.
         chromosome : str, optional
-            DESCRIPTION. List of chromosomes you want to investigate. The default is ['chr1'], if 
+            DESCRIPTION. List of chromosomes you want to investigate. The default is ['chr18','chr19'], if 
             you want to examine all chromosomes, use 'whole_genome'.
         resolution : int, optional
             DESCRIPTION. The resolution is used to divide the chromosome we investigated into 
@@ -439,7 +439,8 @@ class DNAICI():
         cohort2 : str
             DESCRIPTION. dataset 2.
         chromosome : list
-            DESCRIPTION. The chromosome users want to investigate. 'whole_genome' is recommended. 
+            DESCRIPTION. The chromosome list users want to investigate. 'whole_genome' is 
+            recommended. 
         pval_cutoff : float, optional
             DESCRIPTION. P-value for screen for significant nodes. The default is 0.05.
         permutation : int, optional
@@ -477,9 +478,10 @@ class DNAICI():
         cohort2 : str
             DESCRIPTION. dataset 2.
         chromosome : list
-            DESCRIPTION. The chromosome users want to investigate. 'whole_genome' is recommended. 
+            DESCRIPTION. The chromosome list users want to investigate. 'whole_genome' is 
+            recommended. 
         pval_cutoff : float, optional
-            DESCRIPTION. P-value for screen for significant nodes in SigNodes_in_chrom. The 
+            DESCRIPTION. P-value for screen for significant nodes in network_sigNodes. The 
             parameter is used for finding the correct input file. The default is 0.05.
 
         '''
@@ -515,7 +517,7 @@ class DNAICI():
             DESCRIPTION. Methods (relativeRatio: relative ratio; foldChange: fold change) for
             selecting differentially expressed genes. The default is 'relativeRatio'.
         pval_cutoff : float, optional
-            DESCRIPTION. P-value for screen for significant nodes in SigNodes_in_chrom. The 
+            DESCRIPTION. P-value for screen for significant nodes in network_sigNodes. The 
             parameter is used for finding the correct input file. The default is 0.05.
         fig_dpi : float, optional
             DESCRIPTION. Figure resolution in dots per inch. The default is 300.
@@ -551,7 +553,7 @@ class DNAICI():
         chromosome : list
             DESCRIPTION. The chromosome users want to investigate. 'whole_genome' is recommended. 
         pval_cutoff : float, optional
-            DESCRIPTION. P-value for screen for significant nodes in SigNodes_in_chrom. The 
+            DESCRIPTION. P-value for screen for significant nodes in network_sigNodes. The 
             parameter is used for finding the correct input file. The default is 0.05.
 
         '''
@@ -580,9 +582,9 @@ class DNAICI():
         Parameters
         ----------
         chromosome: list
-            DESCRIPTION. The chromosome you want to investigate, i.e. ['chr1']. If you want to check
-            all the chromosome, please use 'whole_genome'. ATTENTION: whole genome estimation is 
-            time consuming.
+            DESCRIPTION. The chromosome you want to investigate, i.e. ['chr1', 'chr2', ...]. If you 
+            want to check all the chromosome, please use 'whole_genome'. ATTENTION: whole genome 
+            estimation is time consuming.
         cal_type : int
             DESCRIPTION. The type of calculation, where 
             0: comparison between different resolution, 
@@ -623,8 +625,9 @@ class DNAICI():
         cohort : str
             DESCRIPTION. dataset you want to investigate.
         chromosome: list
-            DESCRIPTION. The chromosome you want to investigate, i.e. ['chr1']. If you want to check
-            all the chromosome, please use 'whole_genome'. ATTENTION: whole genome estimation is 
+            DESCRIPTION. The chromosome you want to investigate, i.e. ['chr1', 'chr2', ...]. If you 
+            want to check all the chromosome, please use 'whole_genome'. ATTENTION: whole genome 
+            estimation is time consuming.
             time consuming.
         cutoff4Proportion : float, optional
             DESCRIPTION. The proportion is used to determine the minimal size of valid community.
