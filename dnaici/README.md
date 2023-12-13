@@ -272,20 +272,16 @@ The subnetworks, genomic features (histone markers of enhancer/repressor, gene e
 
 ## STEP S. Estimate tuning parameters
 
-If you want to explore the full input data including 23 chromosomes, the computing will be quite time consuming, be careful and patient :)
+In this section, we provide two functions for estimating the optimal parameters, super resolution and valid community size, respectively. If you want to explore the full input data including 23 chromosomes, the computing will be quite time consuming, be careful and patient :)
 
-
-    0: comparison between different resolution, 
-    1: comparison between different super resolution with resolution equal to 50kb,
-    2: comparison between different super resolution with resolution equal to 100kb,
-    3: comparison between different super resolution with resolution equal to 500kb.
+The first function is to explore the parameter super resolution in HOMER.
 
 ```python
 dna.estimate_resolution(chromosome, cal_type, cohort1, cohort2, fig_dpi = 300)
 ```
 > **Parameters:**
 >
-> ***chromosome***: The chromosome you want to investigate, i.e. `['chr1', 'chr2', ...]`. If you want to check all the chromosome, please use `'whole_genome'`. ATTENTION: whole genome estimation is recommended but time consuming.
+> ***chromosome***: The chromosome you want to investigate, i.e. `['chr1', 'chr2', ...]`. If you want to check all the chromosome, please use `'whole_genome'`. Whole genome estimation is recommended but time consuming.
 >
 > ***cal_type***: he type of calculation, where
             `0`: comparison between different resolution, 
@@ -300,21 +296,20 @@ dna.estimate_resolution(chromosome, cal_type, cohort1, cohort2, fig_dpi = 300)
 > ***fig_dpi***: Figure resolution in dots per inch. The default is `300`.
 
 
-**Note**: The following analysis requires the first two functions in STEP 2.1.Cluster Hi-C interactions to communities finished (`dna.cluster_for_hic()` and `dna.cluster_to_json()`).  It is recommended to get the optimal cutoff by using all 23 chromosomes
-
+The next function is to find the cutoff value for valid community. **ATTENTION**: This function requires the first two functions in STEP 2.1 finished (`dna.cluster_for_hic()` and `dna.cluster_to_json()`). It is recommended to get the optimal cutoff by using all 23 chromosomes, but again, this is more time consuming.
 
 ```python
-dna.estimate_community_size(cohort, chromosome, cutoff4Proportion = 0.02), fig_dpi = 300)
+dna.estimate_community_size(cohort, chromosome, cutoff4Proportion = 0.02, fig_dpi = 300)
 ```
 > **Parameters:**
 >
-> ***chromosome***: The chromosome you want to investigate, i.e. `['chr1', 'chr2', ...]`. If you want to check all the chromosome, please use `'whole_genome'`. ATTENTION: whole genome estimation is recommended but time consuming.
+> ***cohort***: The dataset you want to investigate.
+> 
+> ***chromosome***: The chromosome you want to investigate, i.e. `['chr1', 'chr2', ...]`. If you want to check all the chromosome, please use `'whole_genome'`. Whole genome estimation is recommended but time consuming.
 >
-> ***cal_type***: he type of calculation, where
+> ***cutoff4Proportion***: The proportion is used to determine the minimal size of valid community. The default is 0.02.
 > 
-> ***cal_type***: he type of calculation, where
-> 
-> ***cal_type***: he type of calculation, where
+> ***fig_dpi***: Figure resolution in dots per inch. The default is `300`.
 
 
 ***
