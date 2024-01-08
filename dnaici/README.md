@@ -283,7 +283,7 @@ dna.estimate_resolution(chromosome, cal_type, cohort1, cohort2, fig_dpi = 300)
 >
 > ***chromosome***: The chromosome you want to investigate, i.e. `['chr1', 'chr2', ...]`. If you want to check all the chromosome, please use `'whole_genome'`. Whole genome estimation is recommended but time consuming.
 >
-> ***cal_type***: he type of calculation, where
+> ***cal_type***: the type of calculation, where
             `0`: comparison between different resolution, 
             `1`: comparison between different super resolution with resolution equal to 50kb,
             `2`: comparison between different super resolution with resolution equal to 100kb,
