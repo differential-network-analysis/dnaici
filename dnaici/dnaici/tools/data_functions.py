@@ -27,7 +27,7 @@ def read_all_data_files(out_data_folder, bin_str, feature_str, chrom_str, time_s
   '''
   #input files
   exp_f = out_data_folder + '/expression_data/' + bin_str + '/out_plots/' + time_str + '/' + chrom_str +'_geneExp_'+ feature_str + '_zscore.matrix'
-  dnas_f = out_data_folder + '/nucleosome_density_data/' + bin_str + '/out_plots/' + time_str + '/' + chrom_str +'_DNas_'+ feature_str + '_zscore.matrix'
+  dnas_f = out_data_folder + '/nucleosome_density_data/' + bin_str + '/out_plots/' + time_str + '/' + chrom_str +'_nucleoDens_'+ feature_str + '_zscore.matrix'
   ctcf_f = out_data_folder + '/histone_data/' + bin_str + '/out_plots/' + time_str + '/' + chrom_str +'_ctcf_'+ feature_str + '_zscore.matrix'
   h3k4me1_f = out_data_folder + '/histone_data/' + bin_str + '/out_plots/' + time_str + '/' + chrom_str +'_h3k4me1_'+ feature_str + '_zscore.matrix'
   h3k4me3_f = out_data_folder + '/histone_data/' + bin_str + '/out_plots/' + time_str + '/' + chrom_str +'_h3k4me3_'+ feature_str + '_zscore.matrix'
@@ -80,12 +80,12 @@ def read_all_data_files(out_data_folder, bin_str, feature_str, chrom_str, time_s
 
 
 def read_data_files_without_interaction(in_data_folder, bin_str, chrom_str, time_str):
-  ''' read full data of 8 features (expression, Dnas, histones) in a chromosome specific and window bin speicific format (e.g., _500kb_regions)
+  ''' read full data of 8 features (expression, nucleosome density, histones) in a chromosome specific and window bin speicific format (e.g., _500kb_regions)
       return loaded dataframe in a dictoanry
   '''
   #input files
   exp_f = in_data_folder + '/expression_data/' + bin_str + '/out_data/' + time_str + '/' + chrom_str + '_' + bin_str + '_regions_geneExp_array.bed'
-  dnas_f = in_data_folder + '/nucleosome_density_data/' + bin_str + '/out_data/' + time_str + '/' + chrom_str + '_' + bin_str + '_regions_DNas_array.bed'
+  dnas_f = in_data_folder + '/nucleosome_density_data/' + bin_str + '/out_data/' + time_str + '/' + chrom_str + '_' + bin_str + '_regions_nucleoDens_array.bed'
   ctcf_f = in_data_folder + '/histone_data/' + bin_str + '/out_data/' + time_str + '/' + chrom_str + '_' + bin_str + '_regions_ctcf_array.bed'
   h3k4me1_f = in_data_folder + '/histone_data/' + bin_str + '/out_data/' + time_str + '/' + chrom_str + '_' + bin_str + '_regions_h3k4me1_array.bed'
   h3k4me3_f = in_data_folder + '/histone_data/' + bin_str + '/out_data/' + time_str + '/' + chrom_str + '_' + bin_str + '_regions_h3k4me3_array.bed'

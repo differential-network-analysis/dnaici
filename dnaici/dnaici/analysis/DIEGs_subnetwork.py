@@ -56,13 +56,16 @@ def findNodes(DIEGs_in_chr, in_data_folder, out_data_folder, resolution, cohort1
     for ind in DIEGs_in_chr.index:
         chrom, start, end = DIEGs_in_chr['chrom'][ind], DIEGs_in_chr['start'][ind], DIEGs_in_chr['end'][ind]
         sub_bin_df = bin_df[bin_df.chrom.isin([chrom])]
-        min_node = sub_bin_df[sub_bin_df['start']-start <= 0]['node'].values[-1]
-        max_node = sub_bin_df[sub_bin_df['end']-end >= 0]['node'].values[0]
-        #convert bin defined node index to network defined network
-        n = np.arange(min_node, max_node+1, 1)
-        
-        sub_sigNodes_df = sigNodes_df[sigNodes_df.chrom.isin([chrom])]
-        node.append(np.intersect1d(n, sub_sigNodes_df.nodes))
+        if len(sub_bin_df[sub_bin_df['start']-start <= 0]) > 0 and len(sub_bin_df[sub_bin_df['end']-end >= 0]) > 0:
+            min_node = sub_bin_df[sub_bin_df['start']-start <= 0]['node'].values[-1]
+            max_node = sub_bin_df[sub_bin_df['end']-end >= 0]['node'].values[0]
+            #convert bin defined node index to network defined network
+            n = np.arange(min_node, max_node+1, 1)
+            
+            sub_sigNodes_df = sigNodes_df[sigNodes_df.chrom.isin([chrom])]
+            node.append(np.intersect1d(n, sub_sigNodes_df.nodes))
+        else:
+            node.append([])
     
     DIEGs_with_nodes = DIEGs_in_chr.copy()
     DIEGs_with_nodes['nodes'] = node

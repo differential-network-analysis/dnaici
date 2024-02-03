@@ -58,7 +58,7 @@ def main(in_folder,
         out_strs = ['_geneExp']
     elif multi_omics == 'nucleosome density':
         in_strs = 'nucleosome_density_data'
-        out_strs = ['_DNas']
+        out_strs = ['_nucleoDens']
     elif multi_omics == 'histone marker':
         in_strs = 'histone_data'
         out_strs = ['_ctcf', '_h3k27ac', '_h3k27me3', '_h3k4me1', '_h3k4me3', '_h3k9me3']

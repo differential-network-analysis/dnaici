@@ -3,6 +3,7 @@ import os
 import numpy as np
 import matplotlib as mlp
 import matplotlib.pyplot as plt
+import glob
 
 
 def main(in_data_folder,
@@ -20,7 +21,7 @@ def main(in_data_folder,
         out_strs = ['_geneExp']
     elif multi_omics == 'nucleosome density':
         in_strs = 'nucleosome_density_data'
-        out_strs = ['_DNas']
+        out_strs = ['_nucleoDens']
     elif multi_omics == 'histone marker':
         in_strs = 'histone_data'
         out_strs = ['_ctcf','_h3k27ac','_h3k27me3','_h3k4me1','_h3k4me3','_h3k9me3']
@@ -40,9 +41,10 @@ def main(in_data_folder,
             #read chromsome position of window bins
             hic_pos_f1 = out_data_folder + '/hic_data/' + bin_str + '/hic_interaction_bed/' + cohort + '/' + chrom_str + '_' + bin_str + '_regions.tsv'  
             #read mlti-omics data in 200b resolution
-            omics_f2 = in_data_folder + '/' + in_strs + '/mcf7_' + cohort + out_str + '_200b.bed'
-            if multi_omics == 'gene expression':
-                omics_f2 = in_data_folder + '/' + in_strs + '/mcf7_' + cohort + out_str + '.bed'
+            
+            pathname = in_data_folder + '/' + in_strs + '/*' + cohort + '*.bed'
+            omics_f2 = glob.glob(pathname)[0]
+
             #top N percenage of singal will be takend the mean for pair-wise interactions
             topN_percent = 1.0
             out_path = out_data_folder + '/' + in_strs + '/' + bin_str + '/out_data/' + cohort

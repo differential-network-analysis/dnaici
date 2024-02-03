@@ -230,7 +230,7 @@ def main(in_data_folder,
     else: 
         chrom_strs = chromosome
     for chrom_str in chrom_strs:
-        f1 = os.path.join(homer_data_path, 'mcf7_' + cohort + '_significantInteractions_norm'+ bin_str + '_' + chrom_str + '.txt')
+        f1 = os.path.join(homer_data_path, cohort + '_significantInteractions_norm'+ bin_str + '_' + chrom_str + '.txt')
         #input data
         print(f1)
         left_df, right_df, out_left_file, out_right_file = read_homerInteraction2df(f1, out_data_path)

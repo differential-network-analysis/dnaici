@@ -3,6 +3,7 @@ import glob
 import os
 import numpy as np
 from scipy.stats import ttest_ind
+import glob
 
 
 def true2one(x):
@@ -177,8 +178,11 @@ def main(in_data_folder,
         percentage_str = '0'
         
         #input gene expression data
-        in_exp_f1 = in_data_folder + '/expression_data/mcf7_%s_geneExp.bed'%cohort1
-        in_exp_f2 = in_data_folder + '/expression_data/mcf7_%s_geneExp.bed'%cohort1
+        pathname1 = in_data_folder + '/expression_data/*%s*.bed'%cohort1
+        in_exp_f1 = glob.glob(pathname1)[0]
+        pathname2 = in_data_folder + '/expression_data/*%s*.bed'%cohort2
+        in_exp_f2 = glob.glob(pathname2)[0]
+        
         t0_exp_df = pd.read_csv(in_exp_f1, sep='\t', header=None)
         t1_exp_df = pd.read_csv(in_exp_f2, sep='\t', header=None)
         column_names = ['chrom','starts','ends','zscores','gene','gene_id','strand','ensemble_id','count']

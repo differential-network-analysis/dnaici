@@ -180,91 +180,137 @@ dna.enrichment_heatmap(permutation = 100, fig_dpi = 300)
 
 The permutation results are stored in `'/out_data_folder/hic_data/resolution/hic_community_figures'`.
 
-## STEP 3 Differential network analysis
+
 ## STEP 3.1. Differential interacting nodes
 
-Find centrality of nodes in Hi-C networks
-
-**Required**: None
-
-**Optional**: permutation (Default = 100)
+After the above steps, we can obtain information about the genomic features of a given dataset. For differential network analysis, another piece of information we need is the topological feature of the network. Therefore, we next find the centrality of nodes in Hi-C networks.
 
 ```python
-dna.network_centrality()
+dna.network_centrality(permutation = 100)
 ```
+> **Parameters:**
+>
+> ***permutation***: Number of random permurtations for assigning a p-val to each node's centrality. The default is `100`.
 
-**Note**: The following analysis requires completing the above steps for two cohorts!
+The centrality for each node in the networks are deposited in `'/out_data_folder/hic_data/resolution/hic_community_data'`.
 
-Screen for significant nodes between networks from two cohorts
+**ATTENTION**: The following analysis requires completing the above steps with the same parameters for two cohorts!
 
-**Required**: cohort1 and cohort2 with above steps completed are required by network comparison. Chromosome is required.
-
-**Optional**: pval_cutoff (Default = 0.05), permutation (Default = 100), fig_dpi (Default = 300)
+With the results of the above steps for two cohorts prepared, we can now start the differential network analysis! Firstly, nodes with differences in genomic and topological features between the networks of the two cohorts are identified.
 
 ```python
-dna.network_sigNodes(cohort1, cohort2, chromosome)
+dna.network_sigNodes(cohort1, cohort2, chromosome, pval_cutoff = 0.05, permutation = 100, fig_dpi = 300)
 ```
+> **Parameters:**
+>
+> ***cohort1***: Cohort 1 with all the above steps completed.
+> 
+> ***cohort2***: Cohort 2 with all the above steps completed.
+> 
+> ***chromosome***: The chromosome users want to investigate. It should have a format like `['chr1', 'chr2', ...]` or `'whole_genome'`.
+> 
+> ***pval_cutoff***: P-value for screen for significant nodes. The default is `0.05`.
+> 
+> ***permutation***: Number of sampling when doing permutation test in `enrichment_permutation`. The default is `100`.
+> 
+> ***fig_dpi***: Figure resolution in dots per inch. The default is `300`.
 
-Compare significant nodes with the information from feature data 
-
-**Required**: cohort1 and cohort2 with above steps completed are required by network comparison. Chromosome is required.
-
-**Optional**: pval_cutoff (Default = 0.05)
+Then, for the significantly changed nodes betwenn cohort 1 and cohort 2, we summarize both their commons and differences.
 
 ```python
-dna.network_comparison(cohort1, cohort2, chromosome)
+dna.network_comparison(cohort1, cohort2, chromosome, pval_cutoff = 0.05)
 ```
+> **Parameters:**
+>
+> ***cohort1***: Cohort 1 with all the above steps completed.
+> 
+> ***cohort2***: Cohort 2 with all the above steps completed.
+> 
+> ***chromosome***: The chromosome users want to investigate. It should have a format like `['chr1', 'chr2', ...]` or `'whole_genome'`.
+> 
+> ***pval_cutoff***: P-value for screen for significant nodes. It should be consistent with the P-value set in `network_sigNodes`. The default is `0.05`.
+
+The selected nodes and other information are exported to `'/out_data_folder/differential_network_analysis'`. 
 
 ## STEP 3.2. Enrichment and network analysis
 
-**Note**: Before this step, users should go to DAVID website for gene enrichment analysis base on the DIEGs if they want to get figures of enrichment analysis.
+In this section, differentially interacting and expressed genes (DIEGs) need to be identified from the selected significant nodes. Gene enrichment analysis should be performed based on these DIEGs.
 
-Gene enrichment anaysis based on identified DIEGs from DIGs 
-
-**Required**: cohort1 and cohort2 with above steps completed are required by network comparison
-
-**Optional**: method (Default = 'relativeRatio'), pval_cutoff (Default = 0.05), fig_dpi (Default = 300)
+**ATTENTION**: After obtaining DIEGs, users should go to [DAVID](https://david.ncifcrf.gov/tools.jsp) website for gene enrichment analysis based on these DIEGs if they want to get figures of enrichment analysis.
 
 ```python
-dna.diegs_enrichment(cohort1, cohort2)
+dna.diegs_enrichment(cohort1, cohort2, method = 'relativeRatio', pval_cutoff = 0.05, fig_dpi = 300)
 ```
+> **Parameters:**
+>
+> ***cohort1***: Cohort 1 with all the above steps completed.
+> 
+> ***cohort2***: Cohort 2 with all the above steps completed.
+> 
+> ***method***: Methods for selecting differentially expressed genes (`'relativeRatio'`: relative ratio; `'foldChange'`: fold change). The default is `'relativeRatio'`.
+> 
+> ***pval_cutoff***: P-value for screen for significant nodes in `network_sigNodes`. The default is `0.05`.
+> 
+> ***fig_dpi***: Figure resolution in dots per inch. The default is `300`.
 
-Construct subnetworks based on selected DIEGs
-
-**Required**: cohort1 and cohort2 with above steps completed are required by network comparison. Chromosome is required.
-
-**Optional**: pval_cutoff (Default = 0.05)
+Then, subnetworks based on the selected DIEGs and genomic information within each node can be obtained.
 
 ```python
-dna.diegs_subnetwork(cohort1, cohort2, chromosome)
+dna.diegs_subnetwork(cohort1, cohort2, chromosome, pval_cutoff = 0.05)
 ```
+> **Parameters:**
+>
+> ***cohort1***: Cohort 1 with all the above steps completed.
+> 
+> ***cohort2***: Cohort 2 with all the above steps completed.
+> 
+> ***chromosome***: Methods for selecting differentially expressed genes (`'relativeRatio'`: relative ratio; `'foldChange'`: fold change). The default is `'relativeRatio'`.
+> 
+> ***pval_cutoff***: P-value for screen for significant nodes in `network_sigNodes`. The default is `0.05`.
 
+The subnetworks, genomic features (histone markers of enhancer/repressor, gene expression) as well as gene names within each node are exported to `'/out_data_folder/differential_network_analysis'`. 
 
 ## STEP S. Estimate tuning parameters
 
-**Note**: If you want to explore the full input data including 23 chromosomes, the computing will be quite time consuming, be careful and patient :)
+In this section, we provide two functions for estimating the optimal parameters, super resolution and valid community size, respectively. If you want to explore the full input data including 23 chromosomes, the computing will be quite time consuming, be careful and patient :)
 
-**Required**: Chromosome, cohort1 and cohort2 are required. cal_type is required and only 0, 1, 2, 3 are accepted:
-    0: comparison between different resolution, 
-    1: comparison between different super resolution with resolution equal to 50kb,
-    2: comparison between different super resolution with resolution equal to 100kb,
-    3: comparison between different super resolution with resolution equal to 500kb.
-
-**Optional**: fig_dpi (Default = 300)
+The first function is to explore the parameter super resolution in HOMER.
 
 ```python
-dna.estimate_resolution(chromosome, cal_type, cohort1, cohort2)
+dna.estimate_resolution(chromosome, cal_type, cohort1, cohort2, fig_dpi = 300)
 ```
+> **Parameters:**
+>
+> ***chromosome***: The chromosome you want to investigate, i.e. `['chr1', 'chr2', ...]`. If you want to check all the chromosome, please use `'whole_genome'`. Whole genome estimation is recommended but time consuming.
+>
+> ***cal_type***: the type of calculation, where
+            `0`: comparison between different resolution, 
+            `1`: comparison between different super resolution with resolution equal to 50kb,
+            `2`: comparison between different super resolution with resolution equal to 100kb,
+            `3`: comparison between different super resolution with resolution equal to 500kb.
+>
+> ***cohort1***: Cohort 1 with all the above steps completed.
+> 
+> ***cohort2***: Cohort 2 with all the above steps completed.
+>
+> ***fig_dpi***: Figure resolution in dots per inch. The default is `300`.
 
-**Note**: The following analysis requires the first two functions in STEP 2.1.Cluster Hi-C interactions to communities finished (`dna.cluster_for_hic()` and `dna.cluster_to_json()`).  It is recommended to get the optimal cutoff by using all 23 chromosomes
 
-**Required**: cohort and chromosome are required.
-
-**Optional**: cutoff4Proportion (float = 0.02), fig_dpi (Default = 300)
+The next function is to find the cutoff value for valid community. **ATTENTION**: This function requires the first two functions in STEP 2.1 finished (`dna.cluster_for_hic()` and `dna.cluster_to_json()`). It is recommended to get the optimal cutoff by using all 23 chromosomes, but again, this is more time consuming.
 
 ```python
-dna.estimate_community_size(cohort, chromosome)
+dna.estimate_community_size(cohort, chromosome, cutoff4Proportion = 0.02, fig_dpi = 300)
 ```
+> **Parameters:**
+>
+> ***cohort***: The dataset you want to investigate.
+> 
+> ***chromosome***: The chromosome you want to investigate, i.e. `['chr1', 'chr2', ...]`. If you want to check all the chromosome, please use `'whole_genome'`. Whole genome estimation is recommended but time consuming.
+>
+> ***cutoff4Proportion***: The proportion is used to determine the minimal size of valid community. The default is 0.02.
+> 
+> ***fig_dpi***: Figure resolution in dots per inch. The default is `300`.
+
 
 ***
 

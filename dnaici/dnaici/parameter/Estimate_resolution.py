@@ -57,7 +57,7 @@ def combineChromosome(resolution, cohort, in_data_folder, out_data_folder, chrom
     
     for chrom in chrom_strs:
               
-        file = path + '/' + cohort + '/mcf7_' + cohort + '_significantInteractions_norm%skb_%s.txt' %(str(int(int(bin_size)/1000)), chrom)
+        file = path + '/' + cohort + '/' + cohort + '_significantInteractions_norm%skb_%s.txt' %(str(int(int(bin_size)/1000)), chrom)
         Distance = countDistence(file, resolution, cohort)
         
         comChr = pd.concat([comChr, Distance], ignore_index=True)
@@ -111,7 +111,7 @@ def combineInteraction(resolutions, cohort, out_data_folder, chrom_strs):
             super_resolution = info[1]
             
             path = out_data_folder + '/hic_data/estimate_resolution/hic_interaction_homer_%skb_%skb'%(str(int(int(bin_size)/1000)), str(int(int(super_resolution)/1000)))
-            file = path + '/' + cohort + '/mcf7_' + cohort + '_significantInteractions_norm%skb_%s.txt' %(str(int(int(bin_size)/1000)), chrom)
+            file = path + '/' + cohort + '/' + cohort + '_significantInteractions_norm%skb_%s.txt' %(str(int(int(bin_size)/1000)), chrom)
             Interaction = countInteraction(file)
             
             meanInteraction.append(Interaction)

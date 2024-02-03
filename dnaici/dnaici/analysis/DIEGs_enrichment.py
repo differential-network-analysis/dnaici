@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import glob
 
 
 def importData(all_file, selected_chroms):
@@ -23,10 +24,10 @@ def importData(all_file, selected_chroms):
 def foldChange(gene_expression_file):
     
     gene_expression = pd.read_csv(gene_expression_file, header=0, sep='\t')
-    gene_expression['MCF7'] = gene_expression.MCF7_RNA_rep1+gene_expression.MCF7_RNA_rep2+10e-1
-    gene_expression['MCF7TR'] = gene_expression.MCF7TR_RNA_rep1+gene_expression.MCF7TR_RNA_rep2+10e-1
+    gene_expression['cohort1'] = gene_expression.cohort1_rep1+gene_expression.cohort1_rep2+10e-1
+    gene_expression['cohort2'] = gene_expression.cohort2_rep1+gene_expression.cohort2_rep2+10e-1
     
-    expression_df = pd.DataFrame(data={'foldChange':np.divide(gene_expression['MCF7TR'].values,gene_expression['MCF7'].values), 'gene':gene_expression.GeneSymbol})
+    expression_df = pd.DataFrame(data={'foldChange':np.divide(gene_expression['cohort2'].values,gene_expression['cohort1'].values), 'gene':gene_expression.GeneSymbol})
     
     return expression_df
 
@@ -34,10 +35,10 @@ def foldChange(gene_expression_file):
 def relativeRatio(gene_expression_file):
     
     gene_expression = pd.read_csv(gene_expression_file, header=0, sep='\t')
-    gene_expression['MCF7'] = gene_expression.MCF7_RNA_rep1+gene_expression.MCF7_RNA_rep2+10e-1
-    gene_expression['MCF7TR'] = gene_expression.MCF7TR_RNA_rep1+gene_expression.MCF7TR_RNA_rep2+10e-1
-    gene_expression['mean'] = (gene_expression['MCF7']+gene_expression['MCF7TR'])/2
-    gene_expression['difference'] = gene_expression['MCF7TR']-gene_expression['MCF7']
+    gene_expression['cohort1'] = gene_expression.cohort1_rep1+gene_expression.cohort1_rep2+10e-1
+    gene_expression['cohort2'] = gene_expression.cohort2_rep1+gene_expression.cohort2_rep2+10e-1
+    gene_expression['mean'] = (gene_expression['cohort1']+gene_expression['cohort2'])/2
+    gene_expression['difference'] = gene_expression['cohort2']-gene_expression['cohort1']
     
     expression_df = pd.DataFrame(data={'relativeRatio':np.divide(gene_expression['difference'].values,gene_expression['mean'].values), 'gene':gene_expression.GeneSymbol})
     
@@ -116,7 +117,8 @@ def main(in_data_folder,
     print('Use', method, 'method to select DEGs among DIGs', '\n')
     
     in_folder = in_data_folder + '/expression_data/'
-    rna_count_file = in_folder + 'rna_count.txt'
+    rna_count_file = glob.glob(in_folder + '*rna*.txt')[0]
+    #rna_count_file = in_folder + 'rna_count.txt'
     all_DEGs_df = selectDEGs(rna_count_file, method)
     print('Read file:', rna_count_file, '\n')
     
@@ -131,7 +133,8 @@ def main(in_data_folder,
         
         selected_chroms = selected_df.id.str.split('_',expand=True)[0].unique()
         gene_set = importData(out_folder, selected_chroms)
-        expression_bed = in_folder + 'mcf7_%s_geneExp.bed'%cohort1
+        expression_bed = glob.glob(in_folder + '*%s*.bed'%cohort1)[0]
+        #expression_bed = in_folder + 'mcf7_%s_geneExp.bed'%cohort1
         expression_df = pd.read_csv(expression_bed, sep='\t', header=0)
         print('Read file:', expression_bed, '\n')
         

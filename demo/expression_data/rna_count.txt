@@ -1,4 +1,4 @@
-GeneSymbol	MCF7_RNA_rep1	MCF7_RNA_rep2	MCF7TR_RNA_rep1	MCF7TR_RNA_rep2
+GeneSymbol	cohort1_rep1	cohort1_rep2	cohort2_rep1	cohort2_rep2
 TRNP	0	0	0	0
 TRNT	0	0	0	0
 CYTB	0	0	0	0

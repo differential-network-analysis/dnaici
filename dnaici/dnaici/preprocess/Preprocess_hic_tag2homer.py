@@ -41,7 +41,7 @@ def main(in_data_folder,
     all_out_files = []
     
     for chrom_str in chrom_strs:
-        out_file0 = 'mcf7_' + cohort + '_significantInteractions_norm' + bin_str + '_' + chrom_str + '.txt'
+        out_file0 = cohort + '_significantInteractions_norm' + bin_str + '_' + chrom_str + '.txt'
         out_file = os.path.join(out_data_path, out_file0)
         cmd = 'analyzeHiC ' + in_data_path + ' -res ' + str(resolution) + ' -superRes ' + str(super_resolution) + ' -norm -nolog -center -chr ' + chrom_str + ' -interactions ' + out_file + ' -nomatrix -pvalue ' + str(p_value) + ' -zscore ' + str(zscore)
         all_out_files.append(out_file)
