@@ -122,19 +122,31 @@ def combineInteraction(resolutions, cohort, out_data_folder, chrom_strs):
 
 
 def violinPlot(comTime, comInteraction0, comInteraction1, resolutions, out_data_folder, cohort1, cohort2, fig_dpi):
-    
     sns.set_theme(style="whitegrid")
-    my_colors = {cohort1: '#A4D3EE', cohort2: '#F6F6BC'}
-    fig, ax = plt.subplots()
-    sns.boxplot(data=comTime, x="bin size(kb), super resolution(kb)", y="Distance", hue="time", palette=my_colors)
-    ax.grid(False)
+    if cohort2 == "":
+        my_colors = {cohort1: '#A4D3EE'}
+        fig, ax = plt.subplots()
+        sns.boxplot(data=comTime, x="bin size(kb), super resolution(kb)", y="Distance", hue="time", palette=my_colors)
+        ax.grid(False)
+        
+        ax2 = plt.twinx()
+        sns.lineplot(data=comInteraction0, linestyle='dashed', color='#A4D3EE', linewidth=3, ax=ax2)
+        ax2.grid(False)
+        ax2.set_ylabel('Mean number of significant interactions')
+        #ax2.set(ylim=(-min(comInteraction1)/10, max(comInteraction0)+2000))
     
-    ax2 = plt.twinx()
-    sns.lineplot(data=comInteraction0, linestyle='dashed', color='#A4D3EE', linewidth=3, ax=ax2)
-    sns.lineplot(data=comInteraction1, linestyle='dashed', color='#F6F6BC', linewidth=3, ax=ax2)
-    ax2.grid(False)
-    ax2.set_ylabel('Mean number of significant interactions')
-    #ax2.set(ylim=(-min(comInteraction1)/10, max(comInteraction0)+2000))
+    else:
+        my_colors = {cohort1: '#A4D3EE', cohort2: '#F6F6BC'}
+        fig, ax = plt.subplots()
+        sns.boxplot(data=comTime, x="bin size(kb), super resolution(kb)", y="Distance", hue="time", palette=my_colors)
+        ax.grid(False)
+        
+        ax2 = plt.twinx()
+        sns.lineplot(data=comInteraction0, linestyle='dashed', color='#A4D3EE', linewidth=3, ax=ax2)
+        sns.lineplot(data=comInteraction1, linestyle='dashed', color='#F6F6BC', linewidth=3, ax=ax2)
+        ax2.grid(False)
+        ax2.set_ylabel('Mean number of significant interactions')
+        #ax2.set(ylim=(-min(comInteraction1)/10, max(comInteraction0)+2000))
     
     bin_size1 = resolutions[0].split(',')[0]
     bin_size2 = resolutions[-1].split(',')[0]
@@ -162,11 +174,15 @@ def main(in_data_folder,
          fig_dpi
          ):
     
-    cohort_list = [cohort1, cohort2]
     if chromosome == 'whole_genome':
         chrom_strs = ['chr'+str(i) for i in range(1,24)]
     else: 
         chrom_strs = chromosome
+
+    if cohort2 == "":
+        cohort_list = [cohort1]
+    else:
+        cohort_list = [cohort1, cohort2]
 
     if cal_type == 0:
     # 0 represents comparison between different resolution
@@ -178,8 +194,12 @@ def main(in_data_folder,
         
         comTime = combineTime(resolutions, cohort_list, in_data_folder, out_data_folder, chrom_strs)
         comInteraction0 = combineInteraction(resolutions, cohort1, out_data_folder, chrom_strs)
-        comInteraction1 = combineInteraction(resolutions, cohort2, out_data_folder, chrom_strs)
-        violinPlot(comTime, comInteraction0, comInteraction1, resolutions, out_data_folder, cohort1, cohort2, fig_dpi)
+        if cohort2 == "":
+            comInteraction1 = []
+            violinPlot(comTime, comInteraction0, comInteraction1, resolutions, out_data_folder, cohort1, cohort2, fig_dpi)
+        else:
+            comInteraction1 = combineInteraction(resolutions, cohort2, out_data_folder, chrom_strs)
+            violinPlot(comTime, comInteraction0, comInteraction1, resolutions, out_data_folder, cohort1, cohort2, fig_dpi)
     
     elif cal_type == 1:
     # 1 represents comparison between different super with resolution equal to 50kb
@@ -191,8 +211,12 @@ def main(in_data_folder,
         
         comTime = combineTime(resolutions, cohort_list, in_data_folder, out_data_folder, chrom_strs)
         comInteraction0 = combineInteraction(resolutions, cohort1, out_data_folder, chrom_strs)
-        comInteraction1 = combineInteraction(resolutions, cohort2, out_data_folder, chrom_strs)
-        violinPlot(comTime, comInteraction0, comInteraction1, resolutions, out_data_folder, cohort1, cohort2, fig_dpi)
+        if cohort2 == "":
+            comInteraction1 = []
+            violinPlot(comTime, comInteraction0, comInteraction1, resolutions, out_data_folder, cohort1, cohort2, fig_dpi)
+        else:
+            comInteraction1 = combineInteraction(resolutions, cohort2, out_data_folder, chrom_strs)
+            violinPlot(comTime, comInteraction0, comInteraction1, resolutions, out_data_folder, cohort1, cohort2, fig_dpi)
 
     elif cal_type == 2:
     # 2 represents comparison between different super with resolution equal to 100kb
@@ -204,8 +228,12 @@ def main(in_data_folder,
         
         comTime = combineTime(resolutions, cohort_list, in_data_folder, out_data_folder, chrom_strs)
         comInteraction0 = combineInteraction(resolutions, cohort1, out_data_folder, chrom_strs)
-        comInteraction1 = combineInteraction(resolutions, cohort2, out_data_folder, chrom_strs)
-        violinPlot(comTime, comInteraction0, comInteraction1, resolutions, out_data_folder, cohort1, cohort2, fig_dpi)
+        if cohort2 == "":
+            comInteraction1 = []
+            violinPlot(comTime, comInteraction0, comInteraction1, resolutions, out_data_folder, cohort1, cohort2, fig_dpi)
+        else:
+            comInteraction1 = combineInteraction(resolutions, cohort2, out_data_folder, chrom_strs)
+            violinPlot(comTime, comInteraction0, comInteraction1, resolutions, out_data_folder, cohort1, cohort2, fig_dpi)
     
     elif cal_type == 3:
     # 3 represents comparison between different super with resolution equal to 500kb
@@ -217,12 +245,16 @@ def main(in_data_folder,
         
         comTime = combineTime(resolutions, cohort_list, in_data_folder, out_data_folder, chrom_strs)
         comInteraction0 = combineInteraction(resolutions, cohort1, out_data_folder, chrom_strs)
-        comInteraction1 = combineInteraction(resolutions, cohort2, out_data_folder, chrom_strs)
-        violinPlot(comTime, comInteraction0, comInteraction1, resolutions, out_data_folder, cohort1, cohort2, fig_dpi)
-    
+        if cohort2 == "":
+            comInteraction1 = []
+            violinPlot(comTime, comInteraction0, comInteraction1, resolutions, out_data_folder, cohort1, cohort2, fig_dpi)
+        else:
+            comInteraction1 = combineInteraction(resolutions, cohort2, out_data_folder, chrom_strs)
+            violinPlot(comTime, comInteraction0, comInteraction1, resolutions, out_data_folder, cohort1, cohort2, fig_dpi)
+   
     else:
         print('Wrong cla_type, only 0, 1, 2, and 3 are accepted :)')
-    
+
 
 
 
