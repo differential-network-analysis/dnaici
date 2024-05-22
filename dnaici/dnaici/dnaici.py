@@ -569,7 +569,7 @@ class DNAICI():
                             chromosome: list,
                             cal_type: int,
                             cohort1: str,
-                            cohort2: str,
+                            cohort2: str  = "",
                             fig_dpi: float = 300
                             ):
         '''
