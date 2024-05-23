@@ -277,7 +277,7 @@ In this section, we provide two functions for estimating the optimal parameters,
 The first function is to explore the parameter super resolution in HOMER.
 
 ```python
-dna.estimate_resolution(chromosome, cal_type, cohort1, cohort2, fig_dpi = 300)
+dna.estimate_resolution(chromosome, cal_type, cohort1, cohort2 = "", fig_dpi = 300)
 ```
 > **Parameters:**
 >
@@ -289,9 +289,9 @@ dna.estimate_resolution(chromosome, cal_type, cohort1, cohort2, fig_dpi = 300)
             `2`: comparison between different super resolution with resolution equal to 100kb,
             `3`: comparison between different super resolution with resolution equal to 500kb.
 >
-> ***cohort1***: Cohort 1 with all the above steps completed.
+> ***cohort1***: The experimental condition for input data.
 > 
-> ***cohort2***: Cohort 2 with all the above steps completed.
+> ***cohort2***: The additional experimental condition for input data if you want to compare with cohort1. The default is `""`.
 >
 > ***fig_dpi***: Figure resolution in dots per inch. The default is `300`.
 
