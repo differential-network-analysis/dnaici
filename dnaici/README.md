@@ -8,8 +8,8 @@ The README file provides instructions for analyzing [demo data](https://github.c
 
 The DNAICI pipeline consists of three main mudules
 * `preprocess`: preprocess_hic, preprocess_omics
-* `analysis`: cluster, enrichment, network, dieg
-* `parameter`: estimate
+* `network analysis`: cluster, enrichment
+* `differential analysis`: dieg
 
 The module `preprocess` contains two parts for the preprocessing of raw Hi-C data and other omics data. Four parts in the `analysis` module are used for integrated analysis of multi-omics data. The `parameter` module are used to estimate the optimal values of two tuning parameters. All the above modules depend on two support modules: `tools` and `bin`.
 
