@@ -13,8 +13,9 @@ Multi-omics datasets from chromosomes 18 and 19 in both untreated MCF7 cells and
 
 Three main modules are included in DNAICI package for analyzing multi-omics data:
 * preprocess
-* analysis
-* parameter
+* network analysis
+* differential analysis
+
 
 To obtain consistent results with those in our paper, we recommend that you download and use the [FULL DATA](https://drive.google.com/file/d/1YbdZ7y5bRNqbP_4hVt6rcZM2Om1PoA-b/view?usp=drive_link).
 For information in our paper, see the [HOMEPAGE](https://dnaici.github.io/dnaici/).
